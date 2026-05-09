@@ -3,643 +3,300 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Race Reports & Blog — Söuthsea Swimrun</title>
+<title>Race Reports &amp; Blog — Söuthsea Swimrun</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --black: #080808;
-    --white: #ffffff;
-    --accent: #00D44A;
-    --accent-light: #00eb52;
-    --accent-pale: #e6fff0;
-    --sand: #f0f0f0;
-    --sand-dark: #d0d0d0;
-    --text-muted: #555555;
-    --radius: 4px;
-    --font-display: 'Bebas Neue', sans-serif;
-    --font-body: 'DM Sans', sans-serif;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: var(--font-body);
-    background: var(--white);
-    color: var(--black);
-    overflow-x: hidden;
-    font-size: 16px;
-    line-height: 1.7;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2.5rem;
-    background: rgba(10,10,10,0.92);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-  }
-
-  .nav-logo {
-    font-family: var(--font-display);
-    font-size: 1.4rem;
-    color: var(--white);
-    letter-spacing: 0.08em;
-    text-decoration: none;
-  }
-
-  .nav-logo span { color: var(--accent); }
-
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-    align-items: center;
-  }
-
-  .nav-links a {
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(245,242,235,0.7);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--white); }
-
-  .nav-back {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    color: rgba(245,242,235,0.6) !important;
-    font-size: 0.75rem !important;
-  }
-
-  .nav-back:hover { color: var(--white) !important; }
-
-  .nav-cta {
-    background: var(--accent) !important;
-    color: var(--white) !important;
-    padding: 0.4rem 1rem;
-    border-radius: var(--radius);
-  }
-
-  /* HERO */
-  .page-hero {
-    padding: 8rem 2.5rem 4rem;
-    background: var(--black);
-    border-bottom: 2px solid var(--accent);
-  }
-
-  .page-hero-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .page-hero-label {
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--accent);
-    display: block;
-    margin-bottom: 0.75rem;
-  }
-
-  .page-hero-title {
-    font-family: var(--font-display);
-    font-size: clamp(3rem, 7vw, 5.5rem);
-    color: var(--white);
-    line-height: 1;
-    letter-spacing: 0.03em;
-    margin-bottom: 1rem;
-  }
-
-  .page-hero-desc {
-    font-size: 0.95rem;
-    color: rgba(255,255,255,0.5);
-    font-weight: 300;
-    max-width: 480px;
-  }
-
-
-
-  /* MAIN CONTENT */
-  .blog-main {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 4rem 2.5rem 6rem;
-  }
-
-  /* FEATURED POST */
-  .featured-post {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    border: 1px solid var(--sand-dark);
-    margin-bottom: 3rem;
-    text-decoration: none;
-    color: inherit;
-    transition: border-color 0.2s;
-  }
-
-  .featured-post:hover { border-color: var(--accent); }
-
-  .featured-img {
-    aspect-ratio: 4/3;
-    overflow: hidden;
-    background: var(--sand);
-  }
-
-  .featured-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-  }
-
-  .featured-post:hover .featured-img img { transform: scale(1.03); }
-
-  .featured-body {
-    padding: 2.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background: var(--white);
-  }
-
-  .post-tag {
-    display: inline-block;
-    font-size: 0.65rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    border: 1px solid var(--accent);
-    padding: 0.2rem 0.6rem;
-    border-radius: var(--radius);
-    margin-bottom: 1rem;
-    width: fit-content;
-  }
-
-  .featured-title {
-    font-family: var(--font-display);
-    font-size: 2rem;
-    line-height: 1.05;
-    letter-spacing: 0.02em;
-    color: var(--black);
-    margin-bottom: 1rem;
-  }
-
-  .featured-excerpt {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    line-height: 1.75;
-    font-weight: 300;
-    margin-bottom: 1.5rem;
-  }
-
-  .read-more {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--black);
-    border-bottom: 1px solid var(--black);
-    padding-bottom: 2px;
-    transition: color 0.2s, border-color 0.2s;
-    text-decoration: none;
-  }
-
-  .featured-post:hover .read-more { color: var(--accent); border-color: var(--accent); }
-
-  /* POSTS GRID */
-  .posts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .post-card {
-    border: 1px solid var(--sand-dark);
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    flex-direction: column;
-    transition: border-color 0.2s;
-  }
-
-  .post-card:hover { border-color: var(--accent); }
-
-  .post-card-img {
-    aspect-ratio: 16/9;
-    background: var(--sand);
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .post-card-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-  }
-
-  .post-card:hover .post-card-img img { transform: scale(1.04); }
-
-  .post-card-placeholder {
-    font-family: var(--font-display);
-    font-size: 2.5rem;
-    color: var(--sand-dark);
-    letter-spacing: 0.05em;
-  }
-
-  .post-card-body {
-    padding: 1.5rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .post-year {
-    font-size: 0.65rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 0.5rem;
-  }
-
-  .post-title {
-    font-family: var(--font-display);
-    font-size: 1.3rem;
-    line-height: 1.1;
-    letter-spacing: 0.02em;
-    color: var(--black);
-    margin-bottom: 0.75rem;
-    flex: 1;
-  }
-
-  .post-excerpt {
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    line-height: 1.7;
-    font-weight: 300;
-    margin-bottom: 1.2rem;
-  }
-
-  .post-link {
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent);
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    text-decoration: none;
-  }
-
-  /* SECTION DIVIDER */
-  .section-divider {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin: 3rem 0 2rem;
-  }
-
-  .section-divider span {
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    white-space: nowrap;
-  }
-
-  .section-divider::before, .section-divider::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--sand-dark);
-  }
-
-  /* FOOTER */
-  footer {
-    background: var(--black);
-    padding: 2.5rem 2.5rem 2rem;
-    border-top: 1px solid rgba(255,255,255,0.07);
-  }
-
-  .footer-bottom {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .footer-copy {
-    font-size: 0.78rem;
-    color: rgba(245,242,235,0.25);
-    font-weight: 300;
-  }
-
-  .footer-social {
-    display: flex;
-    gap: 1.5rem;
-    align-items: center;
-  }
-
-  .footer-social a {
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(245,242,235,0.4);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .footer-social a:hover { color: var(--white); }
-
-  .footer-home {
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent) !important;
-  }
-
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    .page-hero { padding: 7rem 1.5rem 3rem; }
-    .blog-main { padding: 3rem 1.5rem 5rem; }
-    .featured-post { grid-template-columns: 1fr; }
-    .featured-img { aspect-ratio: 16/9; }
-    .how-to-add { padding: 1rem 1.5rem; }
-    footer { padding: 2rem 1.5rem; }
-  }
-
-  .fade-in {
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
+:root{--black:#080808;--white:#ffffff;--accent:#00D44A;--accent-light:#00eb52;--sand:#f0f0f0;--sand-dark:#d0d0d0;--text-muted:#555555;--radius:4px;--font-display:'Bebas Neue',sans-serif;--font-body:'DM Sans',sans-serif;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--white);color:var(--black);overflow-x:hidden;font-size:16px;line-height:1.7;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1rem 2.5rem;background:rgba(10,10,10,0.93);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.07);}
+.nav-logo{font-family:var(--font-display);font-size:1.4rem;color:var(--white);letter-spacing:0.08em;text-decoration:none;}
+.nav-logo span{color:var(--accent);}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
+.nav-links a{font-size:0.8rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(245,242,235,0.7);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--white);}
+.nav-cta{background:var(--accent)!important;color:var(--white)!important;padding:0.4rem 1rem;border-radius:var(--radius);}
+.page-hero{padding:8rem 2.5rem 4rem;background:var(--black);border-bottom:2px solid var(--accent);}
+.page-hero-inner{max-width:1100px;margin:0 auto;}
+.page-hero-label{font-size:0.7rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:0.75rem;}
+.page-hero-title{font-family:var(--font-display);font-size:clamp(3rem,7vw,5.5rem);color:var(--white);line-height:1;letter-spacing:0.03em;margin-bottom:1rem;}
+.page-hero-desc{font-size:0.95rem;color:rgba(255,255,255,0.5);font-weight:300;max-width:480px;}
+.blog-main{max-width:1100px;margin:0 auto;padding:4rem 2.5rem 6rem;}
+.featured-post{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--sand-dark);margin-bottom:3rem;text-decoration:none;color:inherit;transition:border-color 0.2s;}
+.featured-post:hover{border-color:var(--accent);}
+.featured-img{aspect-ratio:4/3;overflow:hidden;background:var(--sand);}
+.featured-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s;}
+.featured-post:hover .featured-img img{transform:scale(1.03);}
+.featured-body{padding:2.5rem;display:flex;flex-direction:column;justify-content:center;background:var(--white);}
+.post-tag{display:inline-block;font-size:0.65rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:0.2rem 0.6rem;border-radius:var(--radius);margin-bottom:1rem;width:fit-content;}
+.featured-title{font-family:var(--font-display);font-size:2rem;line-height:1.05;letter-spacing:0.02em;color:var(--black);margin-bottom:1rem;}
+.featured-excerpt{font-size:0.9rem;color:var(--text-muted);line-height:1.75;font-weight:300;margin-bottom:1.5rem;}
+.read-more{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.8rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--black);border-bottom:1px solid var(--black);padding-bottom:2px;transition:color 0.2s,border-color 0.2s;text-decoration:none;}
+.featured-post:hover .read-more{color:var(--accent);border-color:var(--accent);}
+.posts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;}
+.post-card{border:1px solid var(--sand-dark);text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:border-color 0.2s;}
+.post-card:hover{border-color:var(--accent);}
+.post-card-img{aspect-ratio:16/9;background:var(--sand);overflow:hidden;}
+.post-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s;}
+.post-card:hover .post-card-img img{transform:scale(1.04);}
+.post-card-body{padding:1.5rem;flex:1;display:flex;flex-direction:column;}
+.post-year{font-size:0.65rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.5rem;}
+.post-title{font-family:var(--font-display);font-size:1.3rem;line-height:1.1;letter-spacing:0.02em;color:var(--black);margin-bottom:0.75rem;flex:1;}
+.post-excerpt{font-size:0.82rem;color:var(--text-muted);line-height:1.7;font-weight:300;margin-bottom:1.2rem;}
+.post-link{font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:0.3rem;text-decoration:none;}
+.section-divider{display:flex;align-items:center;gap:1rem;margin:3rem 0 2rem;}
+.section-divider span{font-size:0.7rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);white-space:nowrap;}
+.section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:var(--sand-dark);}
+footer{background:var(--black);padding:2.5rem 2.5rem 2rem;border-top:1px solid rgba(255,255,255,0.07);}
+.footer-bottom{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-size:0.78rem;color:rgba(245,242,235,0.25);font-weight:300;}
+.footer-links-row{display:flex;gap:1.5rem;}
+.footer-links-row a{font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(245,242,235,0.4);text-decoration:none;transition:color 0.2s;}
+.footer-links-row a:hover{color:var(--white);}
+.footer-links-row a.green{color:var(--accent);}
+@media(max-width:768px){nav{padding:1rem 1.5rem;}.page-hero{padding:7rem 1.5rem 3rem;}.blog-main{padding:3rem 1.5rem 5rem;}.featured-post{grid-template-columns:1fr;}.featured-img{aspect-ratio:16/9;}footer{padding:2rem 1.5rem;}.nav-links li:not(:last-child){display:none;}}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">SÖS<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="index.html" class="nav-back">← Back to site</a></li>
+    <li><a href="index.html">&#8592; Back to site</a></li>
     <li><a href="https://heylo.com/invite/5VCbcSYC" target="_blank" class="nav-cta">Join Us</a></li>
   </ul>
 </nav>
 
-<!-- PAGE HERO -->
 <div class="page-hero">
   <div class="page-hero-inner">
-    <span class="page-hero-label">Stories from the water & trail</span>
+    <span class="page-hero-label">Stories from the water &amp; trail</span>
     <h1 class="page-hero-title">Race Reports<br>&amp; Blog</h1>
-    <p class="page-hero-desc">Written by SÖS members — from first-timers to seasoned swimrunners. Real experiences, real adventures.</p>
+    <p class="page-hero-desc">Written by SOS members — from first-timers to seasoned swimrunners. Real experiences, real adventures.</p>
   </div>
 </div>
 
-
-
-<!-- MAIN -->
 <main class="blog-main">
 
-  <!-- FEATURED: latest post -->
-  <a href="posts/2025-season-roundup.html" class="featured-post fade-in">
+  <a href="posts/2025-season-roundup.html" class="featured-post">
     <div class="featured-img">
-      <img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/Studland-930x620.webp" alt="2025 season roundup" loading="lazy">
+      <img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/Studland.jpg" alt="2025 Season Roundup" loading="lazy">
     </div>
     <div class="featured-body">
-      <span class="post-tag">Latest · 2025</span>
+      <span class="post-tag">Latest 2025</span>
       <h2 class="featured-title">2025 Season Roundup</h2>
-      <p class="featured-excerpt">As we rapidly approach the 2026 season, it's the perfect time to look back at what SöS members got up to in 2025 — races, adventures, and everything in between.</p>
-      <span class="read-more">Read the full report →</span>
+      <p class="featured-excerpt">Looking back at everything SoS members got up to in 2025 — races, adventures, and stories worth telling. From first-timers to Otillo World Championship qualifiers.</p>
+      <span class="read-more">Read the full report</span>
     </div>
   </a>
 
-  <!-- 2025 -->
   <div class="section-divider"><span>2025</span></div>
-  <div class="posts-grid fade-in">
-
+  <div class="posts-grid">
     <a href="posts/studland-2025.html" class="post-card">
-      <div class="post-card-img">
-        <img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/iSwimmrun-Studland.jpg" alt="Studland 2025" loading="lazy">
-      </div>
+      <div class="post-card-img"><img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/iSwimrun-Studland2-scaled.jpg" alt="Studland 2025" loading="lazy"></div>
       <div class="post-card-body">
-        <div class="post-year">2025 · Race Report</div>
+        <div class="post-year">Race Report 2025</div>
         <h3 class="post-title">Studland 2025</h3>
-        <p class="post-excerpt">Adventures of a swimrun newbie. A couple of years ago I didn't know swimrun existed. My background is as a leisure runner...</p>
-        <span class="post-link">Read more →</span>
+        <p class="post-excerpt">Adventures of a swimrun newbie — a first-timer's honest account of racing at Studland in full kit.</p>
+        <span class="post-link">Read more</span>
       </div>
     </a>
-
   </div>
 
-  <!-- 2024 -->
   <div class="section-divider"><span>2024</span></div>
-  <div class="posts-grid fade-in">
-
+  <div class="posts-grid">
     <a href="posts/2024-season-roundup.html" class="post-card">
-      <div class="post-card-img">
-        <img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/Ex-Swimrun-Sollentuna.jpg" alt="2024 Season Roundup" loading="lazy">
-      </div>
+      <div class="post-card-img"><img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/Ex-Swimrun-Sollentuna.jpg" alt="2024 Season Roundup" loading="lazy"></div>
       <div class="post-card-body">
-        <div class="post-year">2024 · Season Roundup</div>
+        <div class="post-year">Season Roundup 2024</div>
         <h3 class="post-title">2024 Season Roundup</h3>
-        <p class="post-excerpt">With the season having come to an end in the UK, here's a round up of Söuthsea Swimrun's racing activities from 2024.</p>
-        <span class="post-link">Read more →</span>
+        <p class="post-excerpt">A full recap of SoS racing activities from the 2024 season — from local events to international adventures.</p>
+        <span class="post-link">Read more</span>
       </div>
     </a>
-
   </div>
 
-  <!-- 2022 -->
   <div class="section-divider"><span>2022</span></div>
-  <div class="posts-grid fade-in">
-
+  <div class="posts-grid">
     <a href="posts/otillo-cannes-2022.html" class="post-card">
-      <div class="post-card-img">
-        <img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/1-The-British-crew-at-Fort-Royal.jpg" alt="Cannes 2022" loading="lazy">
-      </div>
+      <div class="post-card-img"><img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/1-The-British-crew-at-Fort-Royal.jpg" alt="Otillo Cannes 2022" loading="lazy"></div>
       <div class="post-card-body">
-        <div class="post-year">2022 · Race Report</div>
-        <h3 class="post-title">Ötillö World Series Cannes 2022</h3>
-        <p class="post-excerpt">After a difficult year, a return to racing at one of the most prestigious swimrun events in the world — Cannes, France.</p>
-        <span class="post-link">Read more →</span>
+        <div class="post-year">Race Report 2022</div>
+        <h3 class="post-title">Otillo World Series Cannes 2022</h3>
+        <p class="post-excerpt">Jellyfish, islands, nudist beaches and the South of France. Plus a 1,300m swim back to the mainland.</p>
+        <span class="post-link">Read more</span>
       </div>
     </a>
-
   </div>
 
-  <!-- 2021 -->
   <div class="section-divider"><span>2021</span></div>
-  <div class="posts-grid fade-in">
-
+  <div class="posts-grid">
     <a href="posts/otillo-malta-2021.html" class="post-card">
-      <div class="post-card-img">
-        <img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/Otillo-Malta-2021-2_resized-scaled.jpg" alt="Malta 2021" loading="lazy">
-      </div>
+      <div class="post-card-img"><img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/Otillo-Malta-2021-2_resized-scaled.jpg" alt="Otillo Malta 2021" loading="lazy"></div>
       <div class="post-card-body">
-        <div class="post-year">2021 · Race Report</div>
-        <h3 class="post-title">Ötillö Malta 2021</h3>
-        <p class="post-excerpt">After a successful season with a second place at Breca Gower and third at the Breca National Champs in Jersey, the team heads to Malta.</p>
-        <span class="post-link">Read more →</span>
+        <div class="post-year">Race Report 2021</div>
+        <h3 class="post-title">Otillo Malta 2021</h3>
+        <p class="post-excerpt">Racing the warm, crystal-clear waters of Malta after a successful season at Breca Gower and the National Champs.</p>
+        <span class="post-link">Read more</span>
       </div>
     </a>
-
     <a href="posts/breca-coniston-2021.html" class="post-card">
-      <div class="post-card-img">
-        <img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/SwimrunConiston.jpg" alt="Breca Coniston 2021" loading="lazy">
-      </div>
+      <div class="post-card-img"><img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/SwimrunConiston.jpg" alt="Breca Coniston 2021" loading="lazy"></div>
       <div class="post-card-body">
-        <div class="post-year">2021 · Race Report</div>
+        <div class="post-year">Race Report 2021</div>
         <h3 class="post-title">Breca Coniston Swimrun Sprint 2021</h3>
-        <p class="post-excerpt">Like everyone in the swimrun world, race dates had been moved around for 15 months. Finally — race day in the Lake District.</p>
-        <span class="post-link">Read more →</span>
+        <p class="post-excerpt">After 15 months of postponed race dates, finally — race day in the Lake District. The atmosphere was electric.</p>
+        <span class="post-link">Read more</span>
       </div>
     </a>
-
   </div>
 
-  <!-- 2020 -->
   <div class="section-divider"><span>2020</span></div>
-  <div class="posts-grid fade-in">
-
+  <div class="posts-grid">
     <a href="posts/otillo-engadin-2020.html" class="post-card">
-      <div class="post-card-img">
-        <img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/sosblog-engadin.jpg" alt="Engadin 2020" loading="lazy">
-      </div>
+      <div class="post-card-img"><img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/sosblog-engadin.jpg" alt="Otillo Engadin 2020" loading="lazy"></div>
       <div class="post-card-body">
-        <div class="post-year">2020 · Race Report</div>
-        <h3 class="post-title">Ötillö Engadin Swimrun 2020</h3>
-        <p class="post-excerpt">The new Covid-compliant format: video briefings, masks at registration, social distancing — and still racing in the stunning Swiss Alps.</p>
-        <span class="post-link">Read more →</span>
+        <div class="post-year">Race Report 2020</div>
+        <h3 class="post-title">Otillo Engadin Swimrun 2020</h3>
+        <p class="post-excerpt">Racing in the Swiss Alps in Covid-compliant format — masks at registration, video briefings, and stunning mountain lakes.</p>
+        <span class="post-link">Read more</span>
       </div>
     </a>
-
     <a href="posts/akam-long-eaton-2020.html" class="post-card">
-      <div class="post-card-img">
-        <img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/sosblog-akam.jpg" alt="AKAM 2020" loading="lazy">
-      </div>
+      <div class="post-card-img"><img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/sosblog-akam.jpg" alt="AKAM 2020" loading="lazy"></div>
       <div class="post-card-body">
-        <div class="post-year">2020 · Race Report</div>
+        <div class="post-year">Race Report 2020</div>
         <h3 class="post-title">As Keen As Mustard — Long Eaton 2020</h3>
-        <p class="post-excerpt">I am not a runner. Having just completed my first swimrun event, I thought I'd write about the journey leading up to it.</p>
-        <span class="post-link">Read more →</span>
+        <p class="post-excerpt">I am not a runner. Having just completed my first swimrun event, here's the journey that got me there.</p>
+        <span class="post-link">Read more</span>
       </div>
     </a>
-
   </div>
 
-  <!-- 2019 -->
   <div class="section-divider"><span>2019</span></div>
-  <div class="posts-grid fade-in">
-
+  <div class="posts-grid">
     <a href="posts/breca-gower-2019.html" class="post-card">
-      <div class="post-card-img">
-        <img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/sosblog-breca19.jpg" alt="Breca Gower 2019" loading="lazy">
-      </div>
+      <div class="post-card-img"><img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/sosblog-breca19.jpg" alt="Breca Gower 2019" loading="lazy"></div>
       <div class="post-card-body">
-        <div class="post-year">2019 · Race Report</div>
+        <div class="post-year">Race Report 2019</div>
         <h3 class="post-title">Breca Gower Swimrun 2019</h3>
-        <p class="post-excerpt">A 42km endurance race on the Gower Peninsula in Wales. The race that started it all for many SÖS members.</p>
-        <span class="post-link">Read more →</span>
+        <p class="post-excerpt">A 42km endurance race on the Gower Peninsula in Wales. The race that started it all for many SoS members.</p>
+        <span class="post-link">Read more</span>
       </div>
     </a>
-
     <a href="posts/otillo-uto-2019.html" class="post-card">
-      <div class="post-card-img">
-        <img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/sosblog-sweden19.jpg" alt="Otillo Uto 2019" loading="lazy">
-      </div>
+      <div class="post-card-img"><img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/sosblog-sweden19.jpg" alt="Otillo Uto 2019" loading="lazy"></div>
       <div class="post-card-body">
-        <div class="post-year">2019 · Race Report</div>
-        <h3 class="post-title">Ötillö Final 15km, Utö, Sweden 2019</h3>
-        <p class="post-excerpt">Racing the Ötillö Final on the island of Utö in the Stockholm archipelago — the birthplace of swimrun itself.</p>
-        <span class="post-link">Read more →</span>
+        <div class="post-year">Race Report 2019</div>
+        <h3 class="post-title">Otillo Final 15km, Uto, Sweden 2019</h3>
+        <p class="post-excerpt">Racing the Otillo Final on the island of Uto — in the Stockholm archipelago, birthplace of swimrun itself.</p>
+        <span class="post-link">Read more</span>
       </div>
     </a>
-
   </div>
 
-  <!-- 2018 -->
   <div class="section-divider"><span>2018</span></div>
-  <div class="posts-grid fade-in">
-
+  <div class="posts-grid">
     <a href="posts/breca-gower-2018.html" class="post-card">
-      <div class="post-card-img">
-        <img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/sosblog-breca18.jpg" alt="Breca Gower 2018" loading="lazy">
-      </div>
+      <div class="post-card-img"><img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/sosblog-breca18.jpg" alt="Breca Gower 2018" loading="lazy"></div>
       <div class="post-card-body">
-        <div class="post-year">2018 · Race Report</div>
+        <div class="post-year">Race Report 2018</div>
         <h3 class="post-title">Breca Gower Swimrun 2018</h3>
         <p class="post-excerpt">An unforgettable day on the Gower coast — the one that convinced Sarah to keep going back, year after year.</p>
-        <span class="post-link">Read more →</span>
+        <span class="post-link">Read more</span>
       </div>
     </a>
-
     <a href="posts/oloppet-gothenburg-2018.html" class="post-card">
-      <div class="post-card-img">
-        <img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/sosblog-ollopet.jpg" alt="Oloppet 2018" loading="lazy">
-      </div>
+      <div class="post-card-img"><img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/sosblog-ollopet.jpg" alt="Oloppet 2018" loading="lazy"></div>
       <div class="post-card-body">
-        <div class="post-year">2018 · Race Report</div>
-        <h3 class="post-title">Öloppet Swimrun, Gothenburg 2018</h3>
-        <p class="post-excerpt">Wet and dry, up and down, on and off — such are the various states of the swimrunner. Racing in Sweden felt like coming home.</p>
-        <span class="post-link">Read more →</span>
+        <div class="post-year">Race Report 2018</div>
+        <h3 class="post-title">Oloppet Swimrun, Gothenburg 2018</h3>
+        <p class="post-excerpt">Racing in Sweden felt like coming home for a sport that was born here, on these very kinds of lakes and forest trails.</p>
+        <span class="post-link">Read more</span>
       </div>
     </a>
+  </div>
 
+  <div class="section-divider"><span>Swimrun Blog</span></div>
+  <div class="posts-grid">
+    <a href="posts/what-is-swimrun.html" class="post-card">
+      <div class="post-card-img"><img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/sosblog-swimrun.jpg" alt="What is Swimrun" loading="lazy"></div>
+      <div class="post-card-body">
+        <div class="post-year">Swimrun Blog</div>
+        <h3 class="post-title">What is Swimrun?</h3>
+        <p class="post-excerpt">Everything you need to know about the sport that combines open water swimming and trail running in your wetsuit.</p>
+        <span class="post-link">Read more</span>
+      </div>
+    </a>
+    <a href="posts/what-kit-do-i-need.html" class="post-card">
+      <div class="post-card-img"><img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/swimrun-kit-shot1.jpg" alt="What Kit Do I Need" loading="lazy"></div>
+      <div class="post-card-body">
+        <div class="post-year">Swimrun Blog</div>
+        <h3 class="post-title">What Kit Do I Need?</h3>
+        <p class="post-excerpt">A practical guide to the essential swimrun kit — from wetsuits and pull buoys to paddles and goggles.</p>
+        <span class="post-link">Read more</span>
+      </div>
+    </a>
+    <a href="posts/wetsuit-review.html" class="post-card">
+      <div class="post-card-img"><img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/swimrun-kit-shot2-scaled.jpg" alt="Wetsuit Review" loading="lazy"></div>
+      <div class="post-card-body">
+        <div class="post-year">Gear Review</div>
+        <h3 class="post-title">Wetsuit Review</h3>
+        <p class="post-excerpt">Sarah reviews the swimrun wetsuits she has raced in, from budget options to premium builds.</p>
+        <span class="post-link">Read more</span>
+      </div>
+    </a>
+    <a href="posts/low-tide-boyz.html" class="post-card">
+      <div class="post-card-img"><img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/Low-Tide-Boyz-podcast.jpg" alt="Low Tide Boyz" loading="lazy"></div>
+      <div class="post-card-body">
+        <div class="post-year">Swimrun Blog</div>
+        <h3 class="post-title">Southsea Swimrun Met the Low Tide Boyz</h3>
+        <p class="post-excerpt">Our very own Sarah King appeared on the Low Tide Boyz podcast — the swimrun world's favourite show.</p>
+        <span class="post-link">Read more</span>
+      </div>
+    </a>
+    <a href="posts/the-big-battle.html" class="post-card">
+      <div class="post-card-img"><img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/Optimized-rydal-water.jpg" alt="The Big Battle" loading="lazy"></div>
+      <div class="post-card-body">
+        <div class="post-year">Swimrun Blog</div>
+        <h3 class="post-title">The Big Battle</h3>
+        <p class="post-excerpt">The epic story of the SoS swimrun challenge in the Lake District — a battle against the elements and each other.</p>
+        <span class="post-link">Read more</span>
+      </div>
+    </a>
+    <a href="posts/environment.html" class="post-card">
+      <div class="post-card-img"><img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/Optimized-beach-clean.jpg" alt="Environment" loading="lazy"></div>
+      <div class="post-card-body">
+        <div class="post-year">Swimrun Blog</div>
+        <h3 class="post-title">Southsea Swimrun and the Environment</h3>
+        <p class="post-excerpt">How we think about our environmental impact as a swimrun club — from beach cleans to low-carbon travel.</p>
+        <span class="post-link">Read more</span>
+      </div>
+    </a>
+    <a href="posts/useful-links.html" class="post-card">
+      <div class="post-card-img"><img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/sos-home-about.jpg" alt="Useful Links" loading="lazy"></div>
+      <div class="post-card-body">
+        <div class="post-year">Swimrun Blog</div>
+        <h3 class="post-title">Useful Swimrun Links and Resources</h3>
+        <p class="post-excerpt">A curated collection of useful swimrun resources — events calendars, training guides, kit guides, and community links.</p>
+        <span class="post-link">Read more</span>
+      </div>
+    </a>
   </div>
 
 </main>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-bottom">
-    <p class="footer-copy">© Söuthsea Swimrun 2025. All rights reserved.</p>
-    <div class="footer-social">
-      <a href="index.html" class="footer-home">← Back to site</a>
+    <p class="footer-copy">Copyright Southsea Swimrun 2025. All rights reserved.</p>
+    <div class="footer-links-row">
+      <a href="index.html">Back to site</a>
       <a href="http://instagram.com/southsea.swimrun" target="_blank">Instagram</a>
-      <a href="https://heylo.com/invite/5VCbcSYC" target="_blank">Join on Heylo</a>
+      <a href="https://heylo.com/invite/5VCbcSYC" target="_blank" class="green">Join on Heylo</a>
     </div>
   </div>
 </footer>
-
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(el => {
-      if (el.isIntersecting) el.target.classList.add('visible');
-    });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-</script>
 
 </body>
 </html>
