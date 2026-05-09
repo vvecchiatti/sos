@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Söuthsea Swimrun — Never Give Up</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #080808;
+    --white: #ffffff;
+    --accent: #00D44A;
+    --accent-light: #00eb52;
+    --accent-pale: #e6fff0;
+    --sand: #f0f0f0;
+    --sand-dark: #d0d0d0;
+    --text-muted: #555555;
+    --radius: 4px;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--white);
+    color: var(--black);
+    overflow-x: hidden;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2.5rem;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--white);
+    letter-spacing: 0.08em;
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--accent-light); }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245,242,235,0.7);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  .nav-cta {
+    background: var(--accent) !important;
+    color: var(--black) !important;
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius);
+  }
+
+  .nav-cta:hover { background: var(--accent-light) !important; color: var(--black) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 2.5rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://southseaswimrun.com/wp-content/uploads/2020/12/sos-home-about.jpg');
+    background-size: cover;
+    background-position: center 30%;
+    opacity: 0.35;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0.4) 50%, rgba(10,10,10,0.1) 100%);
+  }
+
+  .hero-badge {
+    position: relative;
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 0.3rem 0.8rem;
+    border-radius: var(--radius);
+    margin-bottom: 1.5rem;
+    width: fit-content;
+  }
+
+  .hero-title {
+    position: relative;
+    font-family: var(--font-display);
+    font-size: clamp(5rem, 14vw, 11rem);
+    line-height: 0.92;
+    color: var(--white);
+    letter-spacing: 0.02em;
+    margin-bottom: 2rem;
+  }
+
+  .hero-title .line-accent { color: var(--accent-light); }
+
+  .hero-bottom {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-desc {
+    max-width: 480px;
+    color: rgba(245,242,235,0.75);
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.75;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--accent);
+    color: var(--white);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: var(--radius);
+    transition: background 0.2s, transform 0.15s;
+    white-space: nowrap;
+  }
+
+  .hero-cta:hover { background: var(--accent-light); color: var(--white); transform: translateY(-2px); }
+
+  .hero-cta svg { width: 16px; height: 16px; }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    color: rgba(245,242,235,0.3);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: rgba(245,242,235,0.2);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%,100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(0.6); }
+  }
+
+  /* SECTIONS */
+  section { padding: 6rem 2.5rem; }
+
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1;
+    letter-spacing: 0.03em;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title.light { color: var(--white); }
+
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* WHAT IS SWIMRUN */
+  .about-section { background: var(--white); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .about-text p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.85;
+    margin-bottom: 1.2rem;
+  }
+
+  .about-text p:last-child { margin-bottom: 0; }
+
+  .about-stat-row {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--sand-dark);
+  }
+
+  .about-stat { flex: 1; }
+
+  .about-stat-num {
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    color: var(--black);
+    line-height: 1;
+  }
+
+  .about-stat-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+  }
+
+  .about-visual {
+    position: relative;
+    aspect-ratio: 4/5;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .about-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .about-visual-tag {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    background: var(--black);
+    color: var(--white);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--radius);
+  }
+
+  /* SESSIONS */
+  .sessions-section { background: var(--black); }
+
+  .sessions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    margin-top: 3rem;
+    background: rgba(255,255,255,0.08);
+  }
+
+  .session-card {
+    background: #111;
+    padding: 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .session-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+    transform-origin: left;
+  }
+
+  .session-card:hover { background: #161616; }
+  .session-card:hover::before { transform: scaleX(1); }
+
+  .session-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid rgba(184,255,0,0.35);
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius);
+    margin-bottom: 1.2rem;
+  }
+
+  .session-name {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--white);
+    line-height: 1.05;
+    letter-spacing: 0.03em;
+    margin-bottom: 0.75rem;
+  }
+
+  .session-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: rgba(245,242,235,0.5);
+    margin-bottom: 1.2rem;
+  }
+
+  .session-meta svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+  .session-desc {
+    font-size: 0.88rem;
+    color: rgba(245,242,235,0.6);
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  .session-heylo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 1.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .session-heylo:hover { border-bottom-color: var(--accent); }
+
+  /* BENEFITS */
+  .benefits-section { background: var(--black); }
+
+  .benefits-header { margin-bottom: 3rem; }
+  .benefits-header .section-label { color: var(--accent); }
+  .benefits-header .section-title { color: var(--white); }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    background: rgba(255,255,255,0.08);
+  }
+
+  .benefit-item {
+    background: #0f0f0f;
+    padding: 2rem 2rem;
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+    transition: background 0.2s;
+  }
+
+  .benefit-item:hover { background: #161616; }
+
+  .benefit-num {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: rgba(184,255,0,0.18);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 2.5rem;
+  }
+
+  .benefit-text h3 {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+
+  .benefit-text p {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* PARTNERS */
+  .partners-section { background: var(--white); }
+
+  .partners-intro {
+    max-width: 560px;
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.75;
+    margin-bottom: 3rem;
+  }
+
+  .partners-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1px;
+    background: var(--sand-dark);
+    border: 1px solid var(--sand-dark);
+  }
+
+  .partner-card {
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 1rem;
+    text-decoration: none;
+    transition: background 0.2s;
+    gap: 0.6rem;
+    text-align: center;
+  }
+
+  .partner-card:hover { background: var(--accent-pale); }
+
+  .partner-name {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--black);
+    letter-spacing: 0.02em;
+  }
+
+  .partner-discount {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .partner-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+  }
+
+  .partners-note {
+    margin-top: 1.5rem;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  /* JOIN */
+  .join-section {
+    background: var(--black);
+    text-align: center;
+    padding: 7rem 2.5rem;
+  }
+
+  .join-section .section-label { color: var(--accent); }
+
+  .join-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 6rem);
+    color: var(--white);
+    letter-spacing: 0.02em;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .join-desc {
+    max-width: 520px;
+    margin: 0 auto 2.5rem;
+    color: rgba(245,242,235,0.6);
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  .join-features {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .join-feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    color: rgba(245,242,235,0.55);
+    font-weight: 300;
+  }
+
+  .join-feature svg { width: 14px; height: 14px; color: var(--accent); }
+
+  .join-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--accent);
+    color: var(--white);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.1rem 2.5rem;
+    border-radius: var(--radius);
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .join-btn:hover { background: var(--accent-light); color: var(--white); transform: translateY(-2px); }
+
+  /* TEAM */
+  .team-section { background: var(--white); }
+
+  .team-intro {
+    max-width: 520px;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .team-card {
+    background: var(--white);
+    border-radius: 2px;
+    overflow: hidden;
+    border: 1px solid var(--sand-dark);
+  }
+
+  .team-card-top {
+    height: 3px;
+    background: var(--accent);
+  }
+
+  .team-founder .team-card-top { background: var(--accent); }
+
+  .team-card-body { padding: 1.75rem; }
+
+  .team-initials {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+  }
+
+  .team-founder .team-initials {
+    background: var(--black);
+    color: var(--accent);
+  }
+
+  .team-name {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--black);
+    margin-bottom: 0.2rem;
+  }
+
+  .team-role {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .team-founder .team-role { color: var(--accent); }
+
+  .team-bio {
+    font-size: 0.84rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    padding: 3rem 2.5rem 2rem;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 3rem;
+    flex-wrap: wrap;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-brand .nav-logo {
+    font-size: 1.6rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-tagline {
+    font-size: 0.8rem;
+    color: rgba(245,242,235,0.35);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+  }
+
+  .footer-links-group h4 {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,242,235,0.4);
+    margin-bottom: 1rem;
+  }
+
+  .footer-links-group ul { list-style: none; }
+
+  .footer-links-group li { margin-bottom: 0.6rem; }
+
+  .footer-links-group a {
+    font-size: 0.88rem;
+    color: rgba(245,242,235,0.6);
+    text-decoration: none;
+    font-weight: 300;
+    transition: color 0.2s;
+  }
+
+  .footer-links-group a:hover { color: var(--white); }
+
+  .footer-bottom {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-copy {
+    font-size: 0.78rem;
+    color: rgba(245,242,235,0.25);
+    font-weight: 300;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .footer-social a {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(245,242,235,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-social a:hover { color: var(--white); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .hero { padding: 0 1.5rem 4rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-visual { aspect-ratio: 16/9; }
+    .sessions-grid { grid-template-columns: 1fr; gap: 1px; }
+    .join-features { gap: 1.5rem; }
+    .footer-inner { flex-direction: column; gap: 2rem; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+    .nav-cta { display: none; }
+  }
+
+  /* FADE IN ANIMATION */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">SÖS<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#sessions">Sessions</a></li>
+    <li><a href="#benefits">Benefits</a></li>
+    <li><a href="#partners">Partners</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="https://heylo.com/invite/5VCbcSYC" target="_blank" class="nav-cta">Join Us</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-badge">UK's first swimrun club · Founded 2019 · Southsea, England</div>
+  <h1 class="hero-title">
+    Never<br>
+    <span class="line-accent">Give</span><br>
+    Up.
+  </h1>
+  <div class="hero-bottom">
+    <p class="hero-desc">
+      Swimrun club based in Southsea, on England's south coast. Open water swimming. Trail running. Extraordinary people. All welcome.
+    </p>
+    <a href="https://heylo.com/invite/5VCbcSYC" target="_blank" class="hero-cta">
+      Join us on Heylo
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text fade-in">
+        <p class="section-label">What is swimrun?</p>
+        <h2 class="section-title">Swimming &amp; running, together.</h2>
+        <p>Swimrun is a sport of alternating swims and runs — you race in your wetsuit the entire time, running out of the water and straight into the next stretch. No transitions, no support crews. Just you, your partner, and the elements.</p>
+        <p>Invented in the Swedish archipelago in 2002, it has since spread around the globe, building a community of adventurous, welcoming people eager to explore nature outside their comfort zones.</p>
+        <p>Söuthsea Swimrun has been welcoming people to the sport on England's south coast since 2019 — bringing a sprinkle of Swedish magic to the Solent.</p>
+        <div class="about-stat-row">
+          <div class="about-stat">
+            <div class="about-stat-num">2019</div>
+            <div class="about-stat-label">Year founded</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num">#1</div>
+            <div class="about-stat-label">First swimrun club in the UK</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num">266+</div>
+            <div class="about-stat-label">Member check-ins</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual fade-in">
+        <img src="https://southseaswimrun.com/wp-content/uploads/2020/12/sos-home-about.jpg" alt="Söuthsea Swimrun members in action" loading="lazy">
+        <div class="about-visual-tag">Southsea · The Solent</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SESSIONS -->
+<section class="sessions-section" id="sessions">
+  <div class="container">
+    <p class="section-label" style="color: rgba(245,242,235,0.5);">Training</p>
+    <h2 class="section-title light">Our sessions.</h2>
+    <div class="sessions-grid fade-in">
+
+      <div class="session-card">
+        <span class="session-tag">Every Wednesday · 6pm</span>
+        <h3 class="session-name">RunRun Wed<br>Intervals</h3>
+        <div class="session-meta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          D-Day Museum, Southsea
+        </div>
+        <p class="session-desc">Led by Chris Scott, this weekly interval session is designed to suit all levels and paces. You'll run at your own speed — and trust us, it'll make a difference. Expect variety, challenge, and progression. Never boredom.</p>
+        <a href="https://heylo.com/invite/5VCbcSYC" target="_blank" class="session-heylo">
+          See on Heylo →
+        </a>
+      </div>
+
+      <div class="session-card">
+        <span class="session-tag">Saturday · Seasonal</span>
+        <h3 class="session-name">Swimrun +<br>Parkrun Combo</h3>
+        <div class="session-meta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Coffee Cup, Eastney Esplanade
+        </div>
+        <p class="session-desc">Swimrun meets the 5km Southsea Parkrun — in wetsuits, swim hats, and full kit. Join from 8:15am at Coffee Cup, or after Parkrun at Eastney (~9:30am). All paces welcome. Perfect for building endurance and attracting funny looks.</p>
+        <a href="https://heylo.com/invite/5VCbcSYC" target="_blank" class="session-heylo">
+          See on Heylo →
+        </a>
+      </div>
+
+      <div class="session-card">
+        <span class="session-tag">Ad-hoc · Year-round</span>
+        <h3 class="session-name">Members'<br>WhatsApp Sessions</h3>
+        <div class="session-meta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/></svg>
+          Various locations, Southsea
+        </div>
+        <p class="session-desc">Through our exclusive WhatsApp group, members connect, discuss, and organise ad-hoc training opportunities throughout the week and weekends. The community decides, the community moves.</p>
+        <a href="https://heylo.com/invite/5VCbcSYC" target="_blank" class="session-heylo">
+          Join to connect →
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits-section" id="benefits">
+  <div class="container">
+    <div class="benefits-header">
+      <p class="section-label">Membership</p>
+      <h2 class="section-title" style="color:var(--white);">Why join SÖS.</h2>
+    </div>
+    <div class="benefits-grid fade-in">
+      <div class="benefit-item">
+        <div class="benefit-num">01</div>
+        <div class="benefit-text">
+          <h3>UK's first swimrun club</h3>
+          <p>Be part of history. Söuthsea Swimrun has led the way on England's south coast since 2019, pioneering the sport in the UK.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-num">02</div>
+        <div class="benefit-text">
+          <h3>Exclusive WhatsApp community</h3>
+          <p>Discussions on training, events, meet-ups, and On Tour trips. Chat with experienced swimrun athletes who genuinely love the sport.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-num">03</div>
+        <div class="benefit-text">
+          <h3>Partner discount codes</h3>
+          <p>Access exclusive codes from local, national, and international partners — gear shops, race organisers, nutrition, massage, physio, and more.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-num">04</div>
+        <div class="benefit-text">
+          <h3>Regular training sessions</h3>
+          <p>Wednesday intervals, summer swimrun parkrun combos, and ad-hoc sessions throughout the week and weekends. Always something on.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-num">05</div>
+        <div class="benefit-text">
+          <h3>Virtual challenge</h3>
+          <p>A fun and engaging way to keep motivation high between races and sessions. Challenge yourself, track progress, stay connected.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-num">06</div>
+        <div class="benefit-text">
+          <h3>All via Heylo</h3>
+          <p>Sessions, chat, payments, and discount codes — all in one place. Join, pay, and connect seamlessly through the Heylo app.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section class="partners-section" id="partners">
+  <div class="container">
+    <p class="section-label">Partners &amp; discounts</p>
+    <h2 class="section-title">Our partner network.</h2>
+    <p class="partners-intro">Members get exclusive discount codes from our growing network of partners — covering gear, nutrition, race entries, recovery, and more. Codes are available via Heylo once you're a member.</p>
+    <div class="partners-grid fade-in">
+
+      <a href="https://www.frankpaddle.com/" target="_blank" class="partner-card">
+        <div class="partner-icon">FP</div>
+        <div class="partner-name">Frank Paddle</div>
+        <div class="partner-discount">15% off</div>
+      </a>
+      <a href="https://zone3.com/" target="_blank" class="partner-card">
+        <div class="partner-icon">Z3</div>
+        <div class="partner-name">Zone3</div>
+        <div class="partner-discount">20% off</div>
+      </a>
+      <a href="https://veloforte.com/" target="_blank" class="partner-card">
+        <div class="partner-icon">VF</div>
+        <div class="partner-name">Veloforte</div>
+        <div class="partner-discount">25% off</div>
+      </a>
+      <a href="https://the-recoveryroom.co.uk/" target="_blank" class="partner-card">
+        <div class="partner-icon">RR</div>
+        <div class="partner-name">The Recovery Room</div>
+        <div class="partner-discount">10% off</div>
+      </a>
+      <a href="https://www.fenlandrunner.com/" target="_blank" class="partner-card">
+        <div class="partner-icon">FR</div>
+        <div class="partner-name">Fenland Runner</div>
+        <div class="partner-discount">10% off</div>
+      </a>
+      <a href="https://oceanlube.co.uk/" target="_blank" class="partner-card">
+        <div class="partner-icon">OL</div>
+        <div class="partner-name">Ocean Lube</div>
+        <div class="partner-discount">10% off</div>
+      </a>
+      <a href="https://sourcetoseaswimrun.co.uk/" target="_blank" class="partner-card">
+        <div class="partner-icon">SS</div>
+        <div class="partner-name">Source to Sea</div>
+        <div class="partner-discount">10% off</div>
+      </a>
+      <a href="https://www.sportsshoes.com/" target="_blank" class="partner-card">
+        <div class="partner-icon">SH</div>
+        <div class="partner-name">SportsShoes.com</div>
+        <div class="partner-discount">15% off</div>
+      </a>
+      <a href="https://www.precisionhydration.com/" target="_blank" class="partner-card">
+        <div class="partner-icon">PF</div>
+        <div class="partner-name">Precision Fuel &amp; Hydration</div>
+        <div class="partner-discount">15% off</div>
+      </a>
+      <a href="https://grittyrascals.com/" target="_blank" class="partner-card">
+        <div class="partner-icon">GR</div>
+        <div class="partner-name">Gritty Rascals Events</div>
+        <div class="partner-discount">10% off</div>
+      </a>
+      <a href="https://www.madhattersportsevents.co.uk/" target="_blank" class="partner-card">
+        <div class="partner-icon">MH</div>
+        <div class="partner-name">Mad Hatters / Hokey Cokey</div>
+        <div class="partner-discount">15% off</div>
+      </a>
+      <a href="https://iswimrun.com/" target="_blank" class="partner-card">
+        <div class="partner-icon">IS</div>
+        <div class="partner-name">I Swimrun</div>
+        <div class="partner-discount">10% off</div>
+      </a>
+      <a href="https://www.activitywalesevents.com/events/swimrun/the-wales-swimrun" target="_blank" class="partner-card">
+        <div class="partner-icon">WS</div>
+        <div class="partner-name">Wales Swimrun</div>
+        <div class="partner-discount">25% off</div>
+      </a>
+      <a href="https://www.akamustard.events" target="_blank" class="partner-card">
+        <div class="partner-icon">AK</div>
+        <div class="partner-name">As Keen As Mustard</div>
+        <div class="partner-discount">10% off</div>
+      </a>
+      <a href="https://www.weswimrun.org/" target="_blank" class="partner-card">
+        <div class="partner-icon">WW</div>
+        <div class="partner-name">WeSwimrun</div>
+        <div class="partner-discount">15% off</div>
+      </a>
+      <a href="https://en.exswimrun.se/" target="_blank" class="partner-card">
+        <div class="partner-icon">EX</div>
+        <div class="partner-name">EX Swimrun</div>
+        <div class="partner-discount">10% off</div>
+      </a>
+      <a href="https://swimrunjersey.com/" target="_blank" class="partner-card">
+        <div class="partner-icon">SJ</div>
+        <div class="partner-name">Swimrun Jersey</div>
+        <div class="partner-discount">10% off</div>
+      </a>
+
+    </div>
+    <p class="partners-note">Discount codes are exclusively available to SÖS members via the Heylo app.</p>
+  </div>
+</section>
+
+<!-- JOIN -->
+<section class="join-section" id="join">
+  <p class="section-label">Ready?</p>
+  <h2 class="join-title">Join Söuthsea<br>Swimrun.</h2>
+  <p class="join-desc">Everything happens on Heylo — sessions, member chat, payments, and partner discount codes. One app, all of SÖS.</p>
+  <div class="join-features">
+    <span class="join-feature">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      Sessions & events
+    </span>
+    <span class="join-feature">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      Member chat & WhatsApp
+    </span>
+    <span class="join-feature">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      Partner discount codes
+    </span>
+    <span class="join-feature">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      Virtual challenges
+    </span>
+  </div>
+  <a href="https://heylo.com/invite/5VCbcSYC" target="_blank" class="join-btn">
+    Join us on Heylo
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+  </a>
+</section>
+
+<!-- TEAM -->
+<section class="team-section" id="team">
+  <div class="container">
+    <p class="section-label">The people behind SÖS</p>
+    <h2 class="section-title">Our team.</h2>
+    <p class="team-intro">A small team with a wide range of skills, experience, and passion for the sport. We look forward to swimrunning with you.</p>
+    <div class="team-grid fade-in">
+
+      <div class="team-card team-founder">
+        <div class="team-card-top"></div>
+        <div class="team-card-body">
+          <div class="team-initials">VV</div>
+          <div class="team-name">Vini V.</div>
+          <div class="team-role">Founder · Swimrun Leader</div>
+          <p class="team-bio">Vini started swimrunning in 2019, stepping in to do Breca Gower only three weeks before the race. He's the driving force behind SÖS, wanting to get as many people as possible into this extraordinary sport.</p>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-card-top"></div>
+        <div class="team-card-body">
+          <div class="team-initials">SK</div>
+          <div class="team-name">Sarah King</div>
+          <div class="team-role">Swimrun Leader</div>
+          <p class="team-bio">Sarah has been swimrunning since 2018, racing across the UK and internationally — from the Scilly Islands to Switzerland. A go-to voice in the community, she's also featured on the Löw Tide Böyz and The Swimrun Show podcasts.</p>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-card-top"></div>
+        <div class="team-card-body">
+          <div class="team-initials">AF</div>
+          <div class="team-name">Adrian F.</div>
+          <div class="team-role">Swimrun Leader</div>
+          <p class="team-bio">Adrian discovered swimrun in 2020 and hasn't looked back. He's completed multiple events and says the best thing is the excitement of getting outdoors and going a bit wild in fantastic landscapes.</p>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-card-top"></div>
+        <div class="team-card-body">
+          <div class="team-initials">CS</div>
+          <div class="team-name">Chris S.</div>
+          <div class="team-role">Swimrun Leader</div>
+          <p class="team-bio">Chris leads the Wednesday interval sessions at the D-Day Museum. He can also occasionally be seen in the sea at crazy hours — or battling big waves. Come prepared for a summer dip after Wednesday runs.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section style="background: var(--sand); padding: 6rem 2.5rem;">
+  <div class="container">
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; flex-wrap: wrap; margin-bottom: 3rem;">
+      <div>
+        <p class="section-label" style="color: var(--text-muted);">Stories from the water & trail</p>
+        <h2 class="section-title">Race reports<br>&amp; blog.</h2>
+      </div>
+      <a href="blog.html" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black); text-decoration: none; border-bottom: 1px solid var(--black); padding-bottom: 2px; white-space: nowrap;">
+        View all posts →
+      </a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
+
+      <a href="posts/2025-season-roundup.html" style="background: var(--white); border: 1px solid var(--sand-dark); text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--sand-dark)'">
+        <div style="aspect-ratio:16/9; overflow:hidden;">
+          <img src="https://southseaswimrun.com/wp-content/uploads/2026/01/Studland-930x620.jpg" alt="2025 Season Roundup" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div style="padding: 1.25rem;">
+          <div style="font-size:0.65rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Latest · 2025</div>
+          <h3 style="font-family:var(--font-display);font-size:1.3rem;letter-spacing:0.02em;line-height:1.1;margin-bottom:0.6rem;">2025 Season Roundup</h3>
+          <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.7;font-weight:300;">Looking back at everything SÖS members got up to in 2025 — races, adventures, and stories worth telling.</p>
+        </div>
+      </a>
+
+      <a href="posts/studland-2025.html" style="background: var(--white); border: 1px solid var(--sand-dark); text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--sand-dark)'">
+        <div style="aspect-ratio:16/9; background:var(--sand); display:flex;align-items:center;justify-content:center;">
+          <span style="font-family:var(--font-display);font-size:2rem;color:var(--sand-dark);">SÖS</span>
+        </div>
+        <div style="padding: 1.25rem;">
+          <div style="font-size:0.65rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.5rem;">Race Report · 2025</div>
+          <h3 style="font-family:var(--font-display);font-size:1.3rem;letter-spacing:0.02em;line-height:1.1;margin-bottom:0.6rem;">Studland 2025</h3>
+          <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.7;font-weight:300;">Adventures of a swimrun newbie — a first-timer's honest account of racing at Studland.</p>
+        </div>
+      </a>
+
+      <a href="posts/2024-season-roundup.html" style="background: var(--white); border: 1px solid var(--sand-dark); text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--sand-dark)'">
+        <div style="aspect-ratio:16/9; background:var(--sand); display:flex;align-items:center;justify-content:center;">
+          <span style="font-family:var(--font-display);font-size:2rem;color:var(--sand-dark);">SÖS</span>
+        </div>
+        <div style="padding: 1.25rem;">
+          <div style="font-size:0.65rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.5rem;">Season Roundup · 2024</div>
+          <h3 style="font-family:var(--font-display);font-size:1.3rem;letter-spacing:0.02em;line-height:1.1;margin-bottom:0.6rem;">2024 Season Roundup</h3>
+          <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.7;font-weight:300;">A full recap of SÖS racing activities from the 2024 season — from local events to international adventures.</p>
+        </div>
+      </a>
+
+    </div>
+    <div style="text-align:center; margin-top: 2.5rem;">
+      <a href="blog.html" style="display:inline-flex;align-items:center;gap:0.5rem;font-size:0.82rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--black);text-decoration:none;border:1px solid var(--black);padding:0.75rem 1.75rem;border-radius:var(--radius);transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='var(--black)';this.style.color='var(--white)'" onmouseout="this.style.background='transparent';this.style.color='var(--black)'">
+        All race reports & blog posts →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">SÖS<span>.</span></a>
+      <p class="footer-tagline">Never Give Up · Southsea, England · Since 2019</p>
+    </div>
+    <div class="footer-links-group">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#sessions">Sessions</a></li>
+        <li><a href="#benefits">Benefits</a></li>
+        <li><a href="#partners">Partners</a></li>
+        <li><a href="#team">Team</a></li>
+      </ul>
+    </div>
+    <div class="footer-links-group">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="https://heylo.com/invite/5VCbcSYC" target="_blank">Join on Heylo</a></li>
+        <li><a href="http://instagram.com/southsea.swimrun" target="_blank">Instagram</a></li>
+        <li><a href="https://www.facebook.com/groups/2508335766154254" target="_blank">Facebook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© Söuthsea Swimrun 2025. All rights reserved.</p>
+    <div class="footer-social">
+      <a href="http://instagram.com/southsea.swimrun" target="_blank">Instagram</a>
+      <a href="https://www.facebook.com/groups/2508335766154254" target="_blank">Facebook</a>
+      <a href="https://heylo.com/invite/5VCbcSYC" target="_blank">Heylo</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

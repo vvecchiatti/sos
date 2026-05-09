@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ötillö Malta 2021 — Söuthsea Swimrun</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
+<style>
+:root{--black:#080808;--white:#ffffff;--accent:#00D44A;--accent-light:#00eb52;--accent-pale:#e6fff0;--sand:#f0f0f0;--sand-dark:#d0d0d0;--text-muted:#555555;--radius:4px;--font-display:'Bebas Neue',sans-serif;--font-body:'DM Sans',sans-serif;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--white);color:var(--black);overflow-x:hidden;font-size:16px;line-height:1.7;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1rem 2.5rem;background:rgba(10,10,10,0.93);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.07);}
+.nav-logo{font-family:var(--font-display);font-size:1.4rem;color:var(--white);letter-spacing:0.08em;text-decoration:none;}
+.nav-logo span{color:var(--accent);}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
+.nav-links a{font-size:0.8rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(245,242,235,0.7);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--white);}
+.nav-cta{background:var(--accent)!important;color:var(--white)!important;padding:0.4rem 1rem;border-radius:var(--radius);}
+.hero{min-height:55vh;background:var(--black);display:flex;flex-direction:column;justify-content:flex-end;padding:0 2.5rem 3.5rem;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0.3;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,1) 0%,rgba(8,8,8,0.5) 50%,rgba(8,8,8,0.15) 100%);}
+.hero-inner{position:relative;max-width:860px;}
+.hero-tag{display:inline-block;font-size:0.65rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:0.2rem 0.7rem;border-radius:var(--radius);margin-bottom:1rem;}
+.hero-title{font-family:var(--font-display);font-size:clamp(2.5rem,6vw,4.5rem);color:var(--white);line-height:1;letter-spacing:0.02em;margin-bottom:0.75rem;}
+.hero-year{font-size:0.8rem;color:rgba(255,255,255,0.35);font-weight:300;letter-spacing:0.1em;}
+.hero-nobg{background:#111;}
+article{max-width:720px;margin:0 auto;padding:4rem 2rem 6rem;}
+article p{color:#333;font-size:1rem;line-height:1.85;margin-bottom:1.4rem;font-weight:300;}
+article h2{font-family:var(--font-display);font-size:1.8rem;letter-spacing:0.02em;margin:2.5rem 0 1rem;color:var(--black);}
+article h3,article h4{font-family:var(--font-display);font-size:1.3rem;letter-spacing:0.02em;margin:2rem 0 0.75rem;color:var(--black);}
+article img{width:100%;height:auto;border-radius:2px;margin:1.5rem 0;display:block;}
+article ul,article ol{padding-left:1.5rem;margin-bottom:1.4rem;}
+article li{color:#333;font-size:1rem;line-height:1.8;font-weight:300;margin-bottom:0.3rem;}
+article a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;}
+article a:hover{color:var(--accent-light);}
+article em{font-style:italic;color:var(--text-muted);}
+article strong{font-weight:500;}
+.post-nav{border-top:1px solid var(--sand-dark);margin-top:3rem;padding-top:2rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.post-nav a{font-size:0.78rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--black);text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;border-bottom:1px solid var(--black);padding-bottom:2px;transition:color 0.2s,border-color 0.2s;}
+.post-nav a:hover{color:var(--accent);border-color:var(--accent);}
+.post-nav a.back{color:var(--text-muted);border-color:var(--sand-dark);}
+footer{background:var(--black);padding:2rem 2.5rem;border-top:1px solid rgba(255,255,255,0.07);}
+.footer-inner{max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-size:0.78rem;color:rgba(245,242,235,0.25);font-weight:300;}
+.footer-links{display:flex;gap:1.5rem;}
+.footer-links a{font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(245,242,235,0.4);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--white);}
+.footer-links a.green{color:var(--accent);}
+@media(max-width:768px){nav{padding:1rem 1.5rem;}.hero{padding:0 1.5rem 2.5rem;}article{padding:3rem 1.5rem 5rem;}footer{padding:1.5rem;}.nav-links li:not(:last-child){display:none;}}
+</style>
+
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="nav-logo">SÖS<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="../blog.html">← All posts</a></li>
+    <li><a href="https://heylo.com/invite/5VCbcSYC" target="_blank" class="nav-cta">Join Us</a></li>
+  </ul>
+</nav>
+<div class="hero hero-nobg">
+  
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <span class="hero-tag">Race Report · Ötillö</span>
+    <h1 class="hero-title">Ötillö Malta 2021</h1>
+    <span class="hero-year">2021 · Söuthsea Swimrun</span>
+  </div>
+</div>
+<article>
+<p>Having had a fairly successful swimrun season — second place at Breca Gower and third at the Breca National Champs in Jersey — heading to Malta for Ötillö felt like the right next step.</p>
+<p>Malta presents a very different challenge to UK and Scandinavian events. The swimming is warm and crystal clear, but the terrain is rocky and unforgiving. The course weaves around the islands of Malta and Gozo, with open-water channel swims that can get surprisingly choppy.</p>
+<p>Racing in the Mediterranean in October is a genuine privilege — warm enough not to worry about the cold, but challenging enough to remind you that swimrun at this level is never easy. The event organisation was smooth and the international field was strong and welcoming in equal measure.</p>
+<p>Malta confirmed what most swimrunners already know: the best events take you to places you would never otherwise see, moving through extraordinary landscapes under your own power in a way no other sport quite replicates.</p>
+<p><em>By Sarah King.</em></p>
+<div class="post-nav">
+  <a href="../blog.html" class="back">← All race reports</a>
+  <a href="../index.html">Back to site →</a>
+</div>
+</article>
+<footer>
+  <div class="footer-inner">
+    <p class="footer-copy">© Söuthsea Swimrun 2025</p>
+    <div class="footer-links">
+      <a href="../blog.html">Blog</a>
+      <a href="http://instagram.com/southsea.swimrun" target="_blank">Instagram</a>
+      <a href="https://heylo.com/invite/5VCbcSYC" target="_blank" class="green">Join on Heylo</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
