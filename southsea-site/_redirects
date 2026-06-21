@@ -52,3 +52,6 @@
 # Misc old pages
 /virtual-challenges/  /  301
 /membership/  https://heylo.com/invite/5VCbcSYC  302
+
+# Serve the custom 404 page for any unmatched route (must be last)
+/*  /404.html  404
