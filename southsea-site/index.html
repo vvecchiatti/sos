@@ -4,6 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Söuthsea Swimrun — Never Give Up</title>
+<meta name="description" content="The UK's first swimrun club, on England's south coast since 2019. Open water swimming, trail running, and a welcoming community. All welcome.">
+<link rel="canonical" href="https://southseaswimrun.com/">
+<meta name="theme-color" content="#080808">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Söuthsea Swimrun">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Söuthsea Swimrun — Never Give Up">
+<meta property="og:description" content="The UK's first swimrun club, on England's south coast since 2019. Open water swimming, trail running, and a welcoming community. All welcome.">
+<meta property="og:url" content="https://southseaswimrun.com/">
+<meta property="og:image" content="https://southseaswimrun.com/images/sos-home-about.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Söuthsea Swimrun — Never Give Up">
+<meta name="twitter:description" content="The UK's first swimrun club, on England's south coast since 2019. Open water swimming, trail running, and a welcoming community. All welcome.">
+<meta name="twitter:image" content="https://southseaswimrun.com/images/sos-home-about.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
@@ -100,7 +117,7 @@
   .hero-bg {
     position: absolute;
     inset: 0;
-    background-image: url('https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/sos-home-about.jpg');
+    background-image: url('/images/sos-home-about.jpg');
     background-size: cover;
     background-position: center 30%;
     opacity: 0.35;
@@ -338,7 +355,7 @@
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--accent);
-    border: 1px solid rgba(184,255,0,0.35);
+    border: 1px solid rgba(0,212,74,0.35);
     padding: 0.2rem 0.6rem;
     border-radius: var(--radius);
     margin-bottom: 1.2rem;
@@ -416,7 +433,7 @@
   .benefit-num {
     font-family: var(--font-display);
     font-size: 3rem;
-    color: rgba(184,255,0,0.18);
+    color: rgba(0,212,74,0.18);
     line-height: 1;
     flex-shrink: 0;
     width: 2.5rem;
@@ -763,6 +780,12 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* HOME BLOG CARDS / BUTTON (hover via CSS, not inline JS) */
+  .home-post-card { border: 1px solid var(--sand-dark); transition: border-color 0.2s; }
+  .home-post-card:hover { border-color: var(--accent); }
+  .home-allposts-btn { color: var(--black); background: transparent; border: 1px solid var(--black); transition: background 0.2s, color 0.2s; }
+  .home-allposts-btn:hover { background: var(--black); color: var(--white); }
 </style>
 </head>
 <body>
@@ -832,7 +855,7 @@
         </div>
       </div>
       <div class="about-visual fade-in">
-        <img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/sos-home-about.jpg" alt="Söuthsea Swimrun members in action" loading="lazy">
+        <img src="/images/sos-home-about.jpg" alt="Söuthsea Swimrun members in action" loading="lazy">
         <div class="about-visual-tag">Southsea · The Solent</div>
       </div>
     </div>
@@ -1137,9 +1160,9 @@
     </div>
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
 
-      <a href="posts/2025-season-roundup.html" style="background: var(--white); border: 1px solid var(--sand-dark); text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--sand-dark)'">
+      <a href="posts/2025-season-roundup.html" class="home-post-card" style="background: var(--white); text-decoration: none; color: inherit; display: flex; flex-direction: column;">
         <div style="aspect-ratio:16/9; overflow:hidden;">
-          <img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/Studland-930x620.webp" alt="2025 Season Roundup" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+          <img src="/images/Studland-930x620.webp" alt="2025 Season Roundup" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div style="padding: 1.25rem;">
           <div style="font-size:0.65rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Latest · 2025</div>
@@ -1148,9 +1171,9 @@
         </div>
       </a>
 
-      <a href="posts/studland-2025.html" style="background: var(--white); border: 1px solid var(--sand-dark); text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--sand-dark)'">
+      <a href="posts/studland-2025.html" class="home-post-card" style="background: var(--white); text-decoration: none; color: inherit; display: flex; flex-direction: column;">
         <div style="aspect-ratio:16/9; overflow:hidden;">
-          <img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/iSwimrun-Studland2-scaled.jpg" alt="Studland 2025" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+          <img src="/images/iSwimrun-Studland2-scaled.jpg" alt="Studland 2025" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div style="padding: 1.25rem;">
           <div style="font-size:0.65rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.5rem;">Race Report · 2025</div>
@@ -1159,9 +1182,9 @@
         </div>
       </a>
 
-      <a href="posts/2024-season-roundup.html" style="background: var(--white); border: 1px solid var(--sand-dark); text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--sand-dark)'">
+      <a href="posts/2024-season-roundup.html" class="home-post-card" style="background: var(--white); text-decoration: none; color: inherit; display: flex; flex-direction: column;">
         <div style="aspect-ratio:16/9; overflow:hidden;">
-          <img src="https://raw.githubusercontent.com/southseaswimrun/sos/main/southsea-site/images/Ex-Swimrun-Sollentuna.jpg" alt="2024 Season Roundup" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+          <img src="/images/Ex-Swimrun-Sollentuna.jpg" alt="2024 Season Roundup" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div style="padding: 1.25rem;">
           <div style="font-size:0.65rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.5rem;">Season Roundup · 2024</div>
@@ -1172,7 +1195,7 @@
 
     </div>
     <div style="text-align:center; margin-top: 2.5rem;">
-      <a href="blog.html" style="display:inline-flex;align-items:center;gap:0.5rem;font-size:0.82rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--black);text-decoration:none;border:1px solid var(--black);padding:0.75rem 1.75rem;border-radius:var(--radius);transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='var(--black)';this.style.color='var(--white)'" onmouseout="this.style.background='transparent';this.style.color='var(--black)'">
+      <a href="blog.html" class="home-allposts-btn" style="display:inline-flex;align-items:center;gap:0.5rem;font-size:0.82rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;padding:0.75rem 1.75rem;border-radius:var(--radius);">
         All race reports & blog posts →
       </a>
     </div>
@@ -1206,7 +1229,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© Söuthsea Swimrun 2025. All rights reserved.</p>
+    <p class="footer-copy">© Söuthsea Swimrun <span data-year>2026</span>. All rights reserved.</p>
     <div class="footer-social">
       <a href="http://instagram.com/southsea.swimrun" target="_blank">Instagram</a>
       <a href="https://www.facebook.com/groups/2508335766154254" target="_blank">Facebook</a>
@@ -1215,17 +1238,7 @@
   </div>
 </footer>
 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(el => {
-      if (el.isIntersecting) {
-        el.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-</script>
+<script src="/js/main.js"></script>
 
 </body>
 </html>

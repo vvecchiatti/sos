@@ -1,0 +1,10 @@
+# macOS
+.DS_Store
+._*
+
+# Editor / OS cruft
+Thumbs.db
+*.swp
+
+# Local dev
+.claude/

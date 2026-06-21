@@ -1,0 +1,54 @@
+# Old WordPress permalinks -> new static pages (301 preserves SEO).
+# Cloudflare Pages _redirects format: <from> <to> <status>
+
+/2024-season-roundup/  /posts/2024-season-roundup.html  301
+/2024-season-roundup  /posts/2024-season-roundup.html  301
+/2025-season-roundup/  /posts/2025-season-roundup.html  301
+/2025-season-roundup  /posts/2025-season-roundup.html  301
+/akam-long-eaton-2020/  /posts/akam-long-eaton-2020.html  301
+/akam-long-eaton-2020  /posts/akam-long-eaton-2020.html  301
+/breca-coniston-2021/  /posts/breca-coniston-2021.html  301
+/breca-coniston-2021  /posts/breca-coniston-2021.html  301
+/breca-gower-2018/  /posts/breca-gower-2018.html  301
+/breca-gower-2018  /posts/breca-gower-2018.html  301
+/breca-gower-2019/  /posts/breca-gower-2019.html  301
+/breca-gower-2019  /posts/breca-gower-2019.html  301
+/environment/  /posts/environment.html  301
+/environment  /posts/environment.html  301
+/low-tide-boyz/  /posts/low-tide-boyz.html  301
+/low-tide-boyz  /posts/low-tide-boyz.html  301
+/oloppet-gothenburg-2018/  /posts/oloppet-gothenburg-2018.html  301
+/oloppet-gothenburg-2018  /posts/oloppet-gothenburg-2018.html  301
+/otillo-cannes-2022/  /posts/otillo-cannes-2022.html  301
+/otillo-cannes-2022  /posts/otillo-cannes-2022.html  301
+/otillo-engadin-2020/  /posts/otillo-engadin-2020.html  301
+/otillo-engadin-2020  /posts/otillo-engadin-2020.html  301
+/otillo-malta-2021/  /posts/otillo-malta-2021.html  301
+/otillo-malta-2021  /posts/otillo-malta-2021.html  301
+/otillo-uto-2019/  /posts/otillo-uto-2019.html  301
+/otillo-uto-2019  /posts/otillo-uto-2019.html  301
+/studland-2025/  /posts/studland-2025.html  301
+/studland-2025  /posts/studland-2025.html  301
+/the-big-battle/  /posts/the-big-battle.html  301
+/the-big-battle  /posts/the-big-battle.html  301
+/useful-links/  /posts/useful-links.html  301
+/useful-links  /posts/useful-links.html  301
+/wetsuit-review/  /posts/wetsuit-review.html  301
+/wetsuit-review  /posts/wetsuit-review.html  301
+/what-is-swimrun/  /posts/what-is-swimrun.html  301
+/what-is-swimrun  /posts/what-is-swimrun.html  301
+/what-kit-do-i-need/  /posts/what-kit-do-i-need.html  301
+/what-kit-do-i-need  /posts/what-kit-do-i-need.html  301
+
+# Blog index
+/blog/  /blog.html  301
+
+# Old WooCommerce membership / shop -> Heylo join
+/product/*  https://heylo.com/invite/5VCbcSYC  302
+/shop/*  https://heylo.com/invite/5VCbcSYC  302
+/cart/*  /  302
+/checkout/*  /  302
+
+# Misc old pages
+/virtual-challenges/  /  301
+/membership/  https://heylo.com/invite/5VCbcSYC  302
