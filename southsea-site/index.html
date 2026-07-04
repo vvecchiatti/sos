@@ -23,6 +23,28 @@
 <meta name="twitter:image" content="https://southseaswimrun.com/images/sos-home-about.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsClub",
+  "name": "Söuthsea Swimrun",
+  "alternateName": "SÖS",
+  "url": "https://southseaswimrun.com/",
+  "description": "The UK's first swimrun club, on England's south coast since 2019. Open water swimming, trail running, and a welcoming community.",
+  "foundingDate": "2019",
+  "sport": "Swimrun",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Southsea",
+    "addressRegion": "Hampshire",
+    "addressCountry": "GB"
+  },
+  "sameAs": [
+    "https://www.instagram.com/southsea.swimrun",
+    "https://www.facebook.com/groups/2508335766154254"
+  ]
+}
+</script>
 <style>
   :root {
     --black: #080808;
@@ -102,6 +124,33 @@
 
   .nav-cta:hover { background: var(--accent-light) !important; color: var(--black) !important; }
 
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: var(--radius);
+    cursor: pointer;
+  }
+
+  .nav-toggle span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: var(--white);
+    border-radius: 1px;
+    transition: transform 0.25s, opacity 0.2s;
+  }
+
+  body.nav-open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  body.nav-open .nav-toggle span:nth-child(2) { opacity: 0; }
+  body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
   /* HERO */
   .hero {
     min-height: 100vh;
@@ -109,24 +158,69 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 0 2.5rem 5rem;
+    padding: 6.5rem 2.5rem 5rem;
     position: relative;
     overflow: hidden;
   }
 
+  /* Liquid-glass background: brand black + green gradient, no photo. */
   .hero-bg {
     position: absolute;
     inset: 0;
-    background-image: url('/images/sos-home-about.jpg');
-    background-size: cover;
-    background-position: center 30%;
-    opacity: 0.35;
+    background:
+      radial-gradient(65% 90% at 85% 8%, rgba(0,212,74,0.22) 0%, transparent 62%),
+      radial-gradient(50% 75% at 8% 92%, rgba(0,212,74,0.14) 0%, transparent 58%),
+      linear-gradient(155deg, #0d0d0d 0%, var(--black) 55%, #041007 100%);
+  }
+
+  .hero-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.75;
+    will-change: transform;
+  }
+
+  .hero-blob-1 {
+    width: 46vw; height: 46vw;
+    min-width: 380px; min-height: 380px;
+    top: -12%; right: -8%;
+    background: radial-gradient(circle at 35% 35%, rgba(0,235,82,0.5), rgba(0,212,74,0.16) 55%, transparent 75%);
+    animation: blobDrift 19s ease-in-out infinite alternate;
+  }
+
+  .hero-blob-2 {
+    width: 34vw; height: 34vw;
+    min-width: 300px; min-height: 300px;
+    bottom: -14%; left: -10%;
+    background: radial-gradient(circle at 60% 40%, rgba(0,212,74,0.32), rgba(0,80,30,0.25) 55%, transparent 78%);
+    animation: blobDrift 24s ease-in-out infinite alternate-reverse;
+  }
+
+  .hero-blob-3 {
+    width: 20vw; height: 20vw;
+    min-width: 220px; min-height: 220px;
+    top: 38%; left: 44%;
+    background: radial-gradient(circle, rgba(0,235,82,0.20), transparent 70%);
+    animation: blobDrift 16s ease-in-out infinite alternate;
+    animation-delay: -6s;
+  }
+
+  @keyframes blobDrift {
+    0%   { transform: translate(0, 0) scale(1); }
+    50%  { transform: translate(-4vw, 3vh) scale(1.12); }
+    100% { transform: translate(3vw, -3vh) scale(0.94); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-blob { animation: none; }
+    .scroll-line { animation: none; }
   }
 
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0.4) 50%, rgba(10,10,10,0.1) 100%);
+    background: linear-gradient(to top, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.25) 45%, rgba(8,8,8,0.05) 100%);
   }
 
   .hero-badge {
@@ -136,10 +230,14 @@
     font-weight: 500;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--accent);
-    border: 1px solid var(--accent);
-    padding: 0.3rem 0.8rem;
-    border-radius: var(--radius);
+    color: var(--accent-light);
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(14px) saturate(1.3);
+    -webkit-backdrop-filter: blur(14px) saturate(1.3);
+    border: 1px solid rgba(0,212,74,0.4);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
     margin-bottom: 1.5rem;
     width: fit-content;
   }
@@ -147,7 +245,7 @@
   .hero-title {
     position: relative;
     font-family: var(--font-display);
-    font-size: clamp(5rem, 14vw, 11rem);
+    font-size: clamp(4.5rem, 12vw, 9.5rem);
     line-height: 0.92;
     color: var(--white);
     letter-spacing: 0.02em;
@@ -167,10 +265,17 @@
 
   .hero-desc {
     max-width: 480px;
-    color: rgba(245,242,235,0.75);
+    color: rgba(245,242,235,0.82);
     font-size: 1rem;
     font-weight: 300;
     line-height: 1.75;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(18px) saturate(1.3);
+    -webkit-backdrop-filter: blur(18px) saturate(1.3);
+    border: 1px solid rgba(255,255,255,0.10);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.10), 0 10px 30px rgba(0,0,0,0.25);
+    border-radius: 14px;
+    padding: 1.25rem 1.5rem;
   }
 
   .hero-cta {
@@ -178,7 +283,7 @@
     align-items: center;
     gap: 0.6rem;
     background: var(--accent);
-    color: var(--white);
+    color: var(--black);
     font-size: 0.85rem;
     font-weight: 500;
     letter-spacing: 0.08em;
@@ -190,7 +295,7 @@
     white-space: nowrap;
   }
 
-  .hero-cta:hover { background: var(--accent-light); color: var(--white); transform: translateY(-2px); }
+  .hero-cta:hover { background: var(--accent-light); color: var(--black); transform: translateY(-2px); }
 
   .hero-cta svg { width: 16px; height: 16px; }
 
@@ -502,19 +607,39 @@
     color: var(--accent);
   }
 
-  .partner-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
+  .partner-logo {
+    width: 100%;
+    height: 76px;
+    border-radius: 8px;
     background: var(--black);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    color: var(--accent);
-    letter-spacing: 0.02em;
+    padding: 0.8rem 1.1rem;
   }
+
+  .partner-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  /* Logos supplied as dark-on-transparent get inverted to read on the black tile. */
+  .partner-logo img.inv { filter: invert(1); }
+
+  /* Logos with a baked-in white background sit on a white tile instead. */
+  .partner-logo.light { background: var(--white); border: 1px solid var(--sand-dark); }
+
+  .partner-invite .partner-logo {
+    background: transparent;
+    border: 1px dashed var(--sand-dark);
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--accent);
+    transition: border-color 0.2s;
+  }
+
+  .partner-invite:hover .partner-logo { border-color: var(--accent); }
 
   .partners-note {
     margin-top: 1.5rem;
@@ -573,7 +698,7 @@
     align-items: center;
     gap: 0.6rem;
     background: var(--accent);
-    color: var(--white);
+    color: var(--black);
     font-size: 0.9rem;
     font-weight: 500;
     letter-spacing: 0.1em;
@@ -584,7 +709,7 @@
     transition: background 0.2s, transform 0.15s;
   }
 
-  .join-btn:hover { background: var(--accent-light); color: var(--white); transform: translateY(-2px); }
+  .join-btn:hover { background: var(--accent-light); color: var(--black); transform: translateY(-2px); }
 
   /* TEAM */
   .team-section { background: var(--white); }
@@ -620,24 +745,21 @@
 
   .team-card-body { padding: 1.75rem; }
 
-  .team-initials {
-    width: 52px;
-    height: 52px;
+  .team-avatar {
+    width: 72px;
+    height: 72px;
     border-radius: 50%;
+    overflow: hidden;
     background: var(--black);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-display);
-    font-size: 1.2rem;
-    color: var(--accent);
     margin-bottom: 1rem;
-    letter-spacing: 0.05em;
+    border: 2px solid var(--accent);
   }
 
-  .team-founder .team-initials {
-    background: var(--black);
-    color: var(--accent);
+  .team-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
   .team-name {
@@ -757,16 +879,32 @@
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+    .nav-links {
+      display: none;
+      position: fixed;
+      top: 61px; left: 0; right: 0;
+      flex-direction: column;
+      gap: 0;
+      background: rgba(8,8,8,0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 0.75rem 1.5rem 1.25rem;
+    }
+    body.nav-open .nav-links { display: flex; }
+    .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .nav-links li:last-child { border-bottom: none; padding-top: 1rem; }
+    .nav-links a { display: block; padding: 0.9rem 0; font-size: 0.9rem; }
+    .nav-links .nav-cta { display: inline-block; padding: 0.6rem 1.4rem; }
     section { padding: 4rem 1.5rem; }
-    .hero { padding: 0 1.5rem 4rem; }
+    .hero { padding: 6rem 1.5rem 4rem; }
+    .scroll-hint { display: none; }
     .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .about-visual { aspect-ratio: 16/9; }
     .sessions-grid { grid-template-columns: 1fr; gap: 1px; }
     .join-features { gap: 1.5rem; }
     .footer-inner { flex-direction: column; gap: 2rem; }
     .footer-bottom { flex-direction: column; align-items: flex-start; }
-    .nav-cta { display: none; }
   }
 
   /* FADE IN ANIMATION */
@@ -793,22 +931,28 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">SÖS<span>.</span></a>
-  <ul class="nav-links">
+  <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-menu">
     <li><a href="#about">About</a></li>
     <li><a href="#sessions">Sessions</a></li>
     <li><a href="#benefits">Benefits</a></li>
     <li><a href="#partners">Partners</a></li>
     <li><a href="#team">Team</a></li>
     <li><a href="blog.html">Blog</a></li>
-    <li><a href="https://heylo.com/invite/5VCbcSYC" target="_blank" class="nav-cta">Join Us</a></li>
+    <li><a href="https://heylo.com/invite/5VCbcSYC" target="_blank" rel="noopener" class="nav-cta">Join Us</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-bg"></div>
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-blob hero-blob-3"></div>
   <div class="hero-overlay"></div>
-  <div class="hero-badge">UK's first swimrun club · Founded 2019 · Southsea, England</div>
+  <div class="hero-badge">UK's first swimrun club · Est. 2019 · Southsea</div>
   <h1 class="hero-title">
     Never<br>
     <span class="line-accent">Give</span><br>
@@ -816,9 +960,9 @@
   </h1>
   <div class="hero-bottom">
     <p class="hero-desc">
-      Swimrun club based in Southsea, on England's south coast. Open water swimming. Trail running. Extraordinary people. All welcome.
+      Open-water swims and seafront trails on the Solent, with a crew that always waits at the buoy. Every pace welcome.
     </p>
-    <a href="https://heylo.com/invite/5VCbcSYC" target="_blank" class="hero-cta">
+    <a href="https://heylo.com/invite/5VCbcSYC" target="_blank" rel="noopener" class="hero-cta">
       Join us on Heylo
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
     </a>
@@ -849,8 +993,8 @@
             <div class="about-stat-label">First swimrun club in the UK</div>
           </div>
           <div class="about-stat">
-            <div class="about-stat-num">266+</div>
-            <div class="about-stat-label">Member check-ins</div>
+            <div class="about-stat-num">17+</div>
+            <div class="about-stat-label">Partner discounts for members</div>
           </div>
         </div>
       </div>
@@ -877,7 +1021,7 @@
           D-Day Museum, Southsea
         </div>
         <p class="session-desc">Led by Chris Scott, this weekly interval session is designed to suit all levels and paces. You'll run at your own speed — and trust us, it'll make a difference. Expect variety, challenge, and progression. Never boredom.</p>
-        <a href="https://heylo.com/invite/5VCbcSYC" target="_blank" class="session-heylo">
+        <a href="https://heylo.com/invite/5VCbcSYC" target="_blank" rel="noopener" class="session-heylo">
           See on Heylo →
         </a>
       </div>
@@ -890,7 +1034,7 @@
           Coffee Cup, Eastney Esplanade
         </div>
         <p class="session-desc">Swimrun meets the 5km Southsea Parkrun — in wetsuits, swim hats, and full kit. Join from 8:15am at Coffee Cup, or after Parkrun at Eastney (~9:30am). All paces welcome. Perfect for building endurance and attracting funny looks.</p>
-        <a href="https://heylo.com/invite/5VCbcSYC" target="_blank" class="session-heylo">
+        <a href="https://heylo.com/invite/5VCbcSYC" target="_blank" rel="noopener" class="session-heylo">
           See on Heylo →
         </a>
       </div>
@@ -903,7 +1047,7 @@
           Various locations, Southsea
         </div>
         <p class="session-desc">Through our exclusive WhatsApp group, members connect, discuss, and organise ad-hoc training opportunities throughout the week and weekends. The community decides, the community moves.</p>
-        <a href="https://heylo.com/invite/5VCbcSYC" target="_blank" class="session-heylo">
+        <a href="https://heylo.com/invite/5VCbcSYC" target="_blank" rel="noopener" class="session-heylo">
           Join to connect →
         </a>
       </div>
@@ -974,90 +1118,95 @@
     <p class="partners-intro">Members get exclusive discount codes from our growing network of partners — covering gear, nutrition, race entries, recovery, and more. Codes are available via Heylo once you're a member.</p>
     <div class="partners-grid fade-in">
 
-      <a href="https://www.frankpaddle.com/" target="_blank" class="partner-card">
-        <div class="partner-icon">FP</div>
+      <a href="https://www.frankpaddle.com/" target="_blank" rel="noopener" class="partner-card">
+        <div class="partner-logo"><img src="/images/partners/frank-paddle.svg" alt="Frank Paddle logo" loading="lazy"></div>
         <div class="partner-name">Frank Paddle</div>
         <div class="partner-discount">15% off</div>
       </a>
-      <a href="https://zone3.com/" target="_blank" class="partner-card">
-        <div class="partner-icon">Z3</div>
+      <a href="https://zone3.com/" target="_blank" rel="noopener" class="partner-card">
+        <div class="partner-logo"><img src="/images/partners/zone3.png" alt="Zone3 logo" class="inv" loading="lazy"></div>
         <div class="partner-name">Zone3</div>
         <div class="partner-discount">20% off</div>
       </a>
-      <a href="https://veloforte.com/" target="_blank" class="partner-card">
-        <div class="partner-icon">VF</div>
+      <a href="https://veloforte.com/" target="_blank" rel="noopener" class="partner-card">
+        <div class="partner-logo"><img src="/images/partners/veloforte.png" alt="Veloforte logo" loading="lazy"></div>
         <div class="partner-name">Veloforte</div>
         <div class="partner-discount">25% off</div>
       </a>
-      <a href="https://the-recoveryroom.co.uk/" target="_blank" class="partner-card">
-        <div class="partner-icon">RR</div>
+      <a href="https://the-recoveryroom.co.uk/" target="_blank" rel="noopener" class="partner-card">
+        <div class="partner-logo"><img src="/images/partners/recovery-room.png" alt="The Recovery Room logo" loading="lazy"></div>
         <div class="partner-name">The Recovery Room</div>
         <div class="partner-discount">10% off</div>
       </a>
-      <a href="https://www.fenlandrunner.com/" target="_blank" class="partner-card">
-        <div class="partner-icon">FR</div>
+      <a href="https://www.fenlandrunner.com/" target="_blank" rel="noopener" class="partner-card">
+        <div class="partner-logo"><img src="/images/partners/fenland-runner.png" alt="Fenland Runner logo" loading="lazy"></div>
         <div class="partner-name">Fenland Runner</div>
         <div class="partner-discount">10% off</div>
       </a>
-      <a href="https://oceanlube.co.uk/" target="_blank" class="partner-card">
-        <div class="partner-icon">OL</div>
+      <a href="https://oceanlube.co.uk/" target="_blank" rel="noopener" class="partner-card">
+        <div class="partner-logo"><img src="/images/partners/ocean-lube.png" alt="Ocean Lube logo" loading="lazy"></div>
         <div class="partner-name">Ocean Lube</div>
         <div class="partner-discount">10% off</div>
       </a>
-      <a href="https://sourcetoseaswimrun.co.uk/" target="_blank" class="partner-card">
-        <div class="partner-icon">SS</div>
+      <a href="https://sourcetoseaswimrun.co.uk/" target="_blank" rel="noopener" class="partner-card">
+        <div class="partner-logo"><img src="/images/partners/source-to-sea.png" alt="Source to Sea logo" loading="lazy"></div>
         <div class="partner-name">Source to Sea</div>
         <div class="partner-discount">10% off</div>
       </a>
-      <a href="https://www.sportsshoes.com/" target="_blank" class="partner-card">
-        <div class="partner-icon">SH</div>
+      <a href="https://www.sportsshoes.com/" target="_blank" rel="noopener" class="partner-card">
+        <div class="partner-logo"><img src="/images/partners/sportsshoes.png" alt="SportsShoes.com logo" loading="lazy"></div>
         <div class="partner-name">SportsShoes.com</div>
         <div class="partner-discount">15% off</div>
       </a>
-      <a href="https://www.precisionhydration.com/" target="_blank" class="partner-card">
-        <div class="partner-icon">PF</div>
+      <a href="https://www.precisionhydration.com/" target="_blank" rel="noopener" class="partner-card">
+        <div class="partner-logo"><img src="/images/partners/precision.png" alt="Precision Fuel & Hydration logo" loading="lazy"></div>
         <div class="partner-name">Precision Fuel &amp; Hydration</div>
         <div class="partner-discount">15% off</div>
       </a>
-      <a href="https://grittyrascals.com/" target="_blank" class="partner-card">
-        <div class="partner-icon">GR</div>
+      <a href="https://grittyrascals.com/" target="_blank" rel="noopener" class="partner-card">
+        <div class="partner-logo"><img src="/images/partners/gritty-rascals.png" alt="Gritty Rascals Events logo" loading="lazy"></div>
         <div class="partner-name">Gritty Rascals Events</div>
         <div class="partner-discount">10% off</div>
       </a>
-      <a href="https://www.madhattersportsevents.co.uk/" target="_blank" class="partner-card">
-        <div class="partner-icon">MH</div>
+      <a href="https://www.madhattersportsevents.co.uk/" target="_blank" rel="noopener" class="partner-card">
+        <div class="partner-logo"><img src="/images/partners/mad-hatters.png" alt="Mad Hatters / Hokey Cokey logo" loading="lazy"></div>
         <div class="partner-name">Mad Hatters / Hokey Cokey</div>
         <div class="partner-discount">15% off</div>
       </a>
-      <a href="https://iswimrun.com/" target="_blank" class="partner-card">
-        <div class="partner-icon">IS</div>
+      <a href="https://iswimrun.com/" target="_blank" rel="noopener" class="partner-card">
+        <div class="partner-logo"><img src="/images/partners/i-swimrun.png" alt="I Swimrun logo" loading="lazy"></div>
         <div class="partner-name">I Swimrun</div>
         <div class="partner-discount">10% off</div>
       </a>
-      <a href="https://www.activitywalesevents.com/events/swimrun/the-wales-swimrun" target="_blank" class="partner-card">
-        <div class="partner-icon">WS</div>
+      <a href="https://www.activitywalesevents.com/events/swimrun/the-wales-swimrun" target="_blank" rel="noopener" class="partner-card">
+        <div class="partner-logo"><img src="/images/partners/wales-swimrun.png" alt="Activity Wales Events logo" loading="lazy"></div>
         <div class="partner-name">Wales Swimrun</div>
         <div class="partner-discount">25% off</div>
       </a>
-      <a href="https://www.akamustard.events" target="_blank" class="partner-card">
-        <div class="partner-icon">AK</div>
+      <a href="https://www.akamustard.events" target="_blank" rel="noopener" class="partner-card">
+        <div class="partner-logo light"><img src="/images/partners/akam.png" alt="As Keen As Mustard logo" loading="lazy"></div>
         <div class="partner-name">As Keen As Mustard</div>
         <div class="partner-discount">10% off</div>
       </a>
-      <a href="https://www.weswimrun.org/" target="_blank" class="partner-card">
-        <div class="partner-icon">WW</div>
+      <a href="https://www.weswimrun.org/" target="_blank" rel="noopener" class="partner-card">
+        <div class="partner-logo"><img src="/images/partners/weswimrun.png" alt="WeSwimrun logo" loading="lazy"></div>
         <div class="partner-name">WeSwimrun</div>
         <div class="partner-discount">15% off</div>
       </a>
-      <a href="https://en.exswimrun.se/" target="_blank" class="partner-card">
-        <div class="partner-icon">EX</div>
+      <a href="https://en.exswimrun.se/" target="_blank" rel="noopener" class="partner-card">
+        <div class="partner-logo"><img src="/images/partners/ex-swimrun.png" alt="EX Swimrun logo" loading="lazy"></div>
         <div class="partner-name">EX Swimrun</div>
         <div class="partner-discount">10% off</div>
       </a>
-      <a href="https://swimrunjersey.com/" target="_blank" class="partner-card">
-        <div class="partner-icon">SJ</div>
+      <a href="https://swimrunjersey.com/" target="_blank" rel="noopener" class="partner-card">
+        <div class="partner-logo"><img src="/images/partners/swimrun-jersey.svg" alt="Swimrun Jersey logo" loading="lazy"></div>
         <div class="partner-name">Swimrun Jersey</div>
         <div class="partner-discount">10% off</div>
+      </a>
+      <a href="https://www.instagram.com/southsea.swimrun" target="_blank" rel="noopener" class="partner-card partner-invite">
+        <div class="partner-logo">Your brand here?</div>
+        <div class="partner-name">Partner with SÖS</div>
+        <div class="partner-discount">DM @southsea.swimrun</div>
       </a>
 
     </div>
@@ -1088,7 +1237,7 @@
       Virtual challenges
     </span>
   </div>
-  <a href="https://heylo.com/invite/5VCbcSYC" target="_blank" class="join-btn">
+  <a href="https://heylo.com/invite/5VCbcSYC" target="_blank" rel="noopener" class="join-btn">
     Join us on Heylo
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
   </a>
@@ -1105,7 +1254,7 @@
       <div class="team-card team-founder">
         <div class="team-card-top"></div>
         <div class="team-card-body">
-          <div class="team-initials">VV</div>
+          <div class="team-avatar"><img src="/images/team/vini.jpg" alt="Vini V." loading="lazy"></div>
           <div class="team-name">Vini V.</div>
           <div class="team-role">Founder · Swimrun Leader</div>
           <p class="team-bio">Vini started swimrunning in 2019, stepping in to do Breca Gower only three weeks before the race. He's the driving force behind SÖS, wanting to get as many people as possible into this extraordinary sport.</p>
@@ -1115,7 +1264,7 @@
       <div class="team-card">
         <div class="team-card-top"></div>
         <div class="team-card-body">
-          <div class="team-initials">SK</div>
+          <div class="team-avatar"><img src="/images/team/sarah.jpg" alt="Sarah King" loading="lazy"></div>
           <div class="team-name">Sarah King</div>
           <div class="team-role">Swimrun Leader</div>
           <p class="team-bio">Sarah has been swimrunning since 2018, racing across the UK and internationally — from the Scilly Islands to Switzerland. A go-to voice in the community, she's also featured on the Löw Tide Böyz and The Swimrun Show podcasts.</p>
@@ -1125,7 +1274,7 @@
       <div class="team-card">
         <div class="team-card-top"></div>
         <div class="team-card-body">
-          <div class="team-initials">AF</div>
+          <div class="team-avatar"><img src="/images/team/adrian.jpg" alt="Adrian F." loading="lazy"></div>
           <div class="team-name">Adrian F.</div>
           <div class="team-role">Swimrun Leader</div>
           <p class="team-bio">Adrian discovered swimrun in 2020 and hasn't looked back. He's completed multiple events and says the best thing is the excitement of getting outdoors and going a bit wild in fantastic landscapes.</p>
@@ -1135,7 +1284,7 @@
       <div class="team-card">
         <div class="team-card-top"></div>
         <div class="team-card-body">
-          <div class="team-initials">CS</div>
+          <div class="team-avatar"><img src="/images/team/chris.jpg" alt="Chris S." loading="lazy"></div>
           <div class="team-name">Chris S.</div>
           <div class="team-role">Swimrun Leader</div>
           <p class="team-bio">Chris leads the Wednesday interval sessions at the D-Day Museum. He can also occasionally be seen in the sea at crazy hours — or battling big waves. Come prepared for a summer dip after Wednesday runs.</p>
@@ -1159,15 +1308,15 @@
       </a>
     </div>
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
-
+<!-- HOME-LATEST:START (generated from posts/posts.json — do not edit by hand) -->
       <a href="posts/2025-season-roundup.html" class="home-post-card" style="background: var(--white); text-decoration: none; color: inherit; display: flex; flex-direction: column;">
         <div style="aspect-ratio:16/9; overflow:hidden;">
-          <img src="/images/Studland-930x620.webp" alt="2025 Season Roundup" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+          <img src="/images/Studland.jpg" alt="2025 Season Roundup" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div style="padding: 1.25rem;">
           <div style="font-size:0.65rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;">Latest · 2025</div>
           <h3 style="font-family:var(--font-display);font-size:1.3rem;letter-spacing:0.02em;line-height:1.1;margin-bottom:0.6rem;">2025 Season Roundup</h3>
-          <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.7;font-weight:300;">Looking back at everything SÖS members got up to in 2025 — races, adventures, and stories worth telling.</p>
+          <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.7;font-weight:300;">Looking back at everything SÖS members got up to in 2025 — races, adventures, and stories worth telling. From first-timers to Otillo World Championship qualifiers.</p>
         </div>
       </a>
 
@@ -1178,7 +1327,7 @@
         <div style="padding: 1.25rem;">
           <div style="font-size:0.65rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.5rem;">Race Report · 2025</div>
           <h3 style="font-family:var(--font-display);font-size:1.3rem;letter-spacing:0.02em;line-height:1.1;margin-bottom:0.6rem;">Studland 2025</h3>
-          <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.7;font-weight:300;">Adventures of a swimrun newbie — a first-timer's honest account of racing at Studland.</p>
+          <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.7;font-weight:300;">Adventures of a swimrun newbie — a first-timer's honest account of racing at Studland in full kit.</p>
         </div>
       </a>
 
@@ -1192,7 +1341,7 @@
           <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.7;font-weight:300;">A full recap of SÖS racing activities from the 2024 season — from local events to international adventures.</p>
         </div>
       </a>
-
+<!-- HOME-LATEST:END -->
     </div>
     <div style="text-align:center; margin-top: 2.5rem;">
       <a href="blog.html" class="home-allposts-btn" style="display:inline-flex;align-items:center;gap:0.5rem;font-size:0.82rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;padding:0.75rem 1.75rem;border-radius:var(--radius);">
@@ -1222,18 +1371,18 @@
     <div class="footer-links-group">
       <h4>Connect</h4>
       <ul>
-        <li><a href="https://heylo.com/invite/5VCbcSYC" target="_blank">Join on Heylo</a></li>
-        <li><a href="http://instagram.com/southsea.swimrun" target="_blank">Instagram</a></li>
-        <li><a href="https://www.facebook.com/groups/2508335766154254" target="_blank">Facebook</a></li>
+        <li><a href="https://heylo.com/invite/5VCbcSYC" target="_blank" rel="noopener">Join on Heylo</a></li>
+        <li><a href="https://www.instagram.com/southsea.swimrun" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.facebook.com/groups/2508335766154254" target="_blank" rel="noopener">Facebook</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
     <p class="footer-copy">© Söuthsea Swimrun <span data-year>2026</span>. All rights reserved.</p>
     <div class="footer-social">
-      <a href="http://instagram.com/southsea.swimrun" target="_blank">Instagram</a>
-      <a href="https://www.facebook.com/groups/2508335766154254" target="_blank">Facebook</a>
-      <a href="https://heylo.com/invite/5VCbcSYC" target="_blank">Heylo</a>
+      <a href="https://www.instagram.com/southsea.swimrun" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/groups/2508335766154254" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://heylo.com/invite/5VCbcSYC" target="_blank" rel="noopener">Heylo</a>
     </div>
   </div>
 </footer>

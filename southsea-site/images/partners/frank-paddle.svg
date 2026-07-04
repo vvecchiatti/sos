@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 160" role="img" aria-label="Frank Paddle">
+  <!-- Typographic mark: Frank Paddle's site uses a text logo, recreated here. -->
+  <g transform="translate(200 62)" text-anchor="middle" fill="#ffffff" font-family="Futura, 'Trebuchet MS', 'Avenir Next', sans-serif" font-weight="700">
+    <text y="0" font-size="44" letter-spacing="10">FRANK</text>
+    <text y="52" font-size="44" letter-spacing="6">PADDLE</text>
+  </g>
+  <rect x="130" y="138" width="140" height="6" rx="3" fill="#00D44A"/>
+</svg>

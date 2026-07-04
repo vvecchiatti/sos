@@ -53,5 +53,9 @@
 /virtual-challenges/  /  301
 /membership/  https://heylo.com/invite/5VCbcSYC  302
 
+# Blog admin
+/admin  /admin.html  200
+/admin/  /admin.html  200
+
 # Serve the custom 404 page for any unmatched route (must be last)
 /*  /404.html  404

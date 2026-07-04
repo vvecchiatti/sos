@@ -1,0 +1,177 @@
+{
+  "reports": [
+    {
+      "slug": "2025-season-roundup",
+      "title": "2025 Season Roundup",
+      "tag": "Season Roundup",
+      "year": "2025",
+      "excerpt": "Looking back at everything SÖS members got up to in 2025 — races, adventures, and stories worth telling. From first-timers to Otillo World Championship qualifiers.",
+      "cover": "/images/Studland.jpg",
+      "format": "html"
+    },
+    {
+      "slug": "studland-2025",
+      "title": "Studland 2025",
+      "tag": "Race Report",
+      "year": "2025",
+      "excerpt": "Adventures of a swimrun newbie — a first-timer's honest account of racing at Studland in full kit.",
+      "cover": "/images/iSwimrun-Studland2-scaled.jpg",
+      "format": "html"
+    },
+    {
+      "slug": "2024-season-roundup",
+      "title": "2024 Season Roundup",
+      "tag": "Season Roundup",
+      "year": "2024",
+      "excerpt": "A full recap of SÖS racing activities from the 2024 season — from local events to international adventures.",
+      "cover": "/images/Ex-Swimrun-Sollentuna.jpg",
+      "format": "html"
+    },
+    {
+      "slug": "otillo-cannes-2022",
+      "title": "Otillo World Series Cannes 2022",
+      "tag": "Race Report",
+      "year": "2022",
+      "excerpt": "Jellyfish, islands, nudist beaches and the South of France. Plus a 1,300m swim back to the mainland.",
+      "cover": "/images/1-The-British-crew-at-Fort-Royal.jpg",
+      "format": "html"
+    },
+    {
+      "slug": "otillo-malta-2021",
+      "title": "Otillo Malta 2021",
+      "tag": "Race Report",
+      "year": "2021",
+      "excerpt": "Racing the warm, crystal-clear waters of Malta after a successful season at Breca Gower and the National Champs.",
+      "cover": "/images/Otillo-Malta-2021-2_resized-scaled.jpg",
+      "format": "html"
+    },
+    {
+      "slug": "breca-coniston-2021",
+      "title": "Breca Coniston Swimrun Sprint 2021",
+      "tag": "Race Report",
+      "year": "2021",
+      "excerpt": "After 15 months of postponed race dates, finally — race day in the Lake District. The atmosphere was electric.",
+      "cover": "/images/SwimrunConiston.jpg",
+      "format": "html"
+    },
+    {
+      "slug": "otillo-engadin-2020",
+      "title": "Otillo Engadin Swimrun 2020",
+      "tag": "Race Report",
+      "year": "2020",
+      "excerpt": "Racing in the Swiss Alps in Covid-compliant format — masks at registration, video briefings, and stunning mountain lakes.",
+      "cover": "/images/sosblog-engadin.jpg",
+      "format": "html"
+    },
+    {
+      "slug": "akam-long-eaton-2020",
+      "title": "As Keen As Mustard — Long Eaton 2020",
+      "tag": "Race Report",
+      "year": "2020",
+      "excerpt": "I am not a runner. Having just completed my first swimrun event, here's the journey that got me there.",
+      "cover": "/images/sosblog-akam.jpg",
+      "format": "html"
+    },
+    {
+      "slug": "breca-gower-2019",
+      "title": "Breca Gower Swimrun 2019",
+      "tag": "Race Report",
+      "year": "2019",
+      "excerpt": "A 42km endurance race on the Gower Peninsula in Wales. The race that started it all for many SÖS members.",
+      "cover": "/images/sosblog-breca19.jpg",
+      "format": "html"
+    },
+    {
+      "slug": "otillo-uto-2019",
+      "title": "Otillo Final 15km, Uto, Sweden 2019",
+      "tag": "Race Report",
+      "year": "2019",
+      "excerpt": "Racing the Otillo Final on the island of Uto — in the Stockholm archipelago, birthplace of swimrun itself.",
+      "cover": "/images/sosblog-sweden19.jpg",
+      "format": "html"
+    },
+    {
+      "slug": "breca-gower-2018",
+      "title": "Breca Gower Swimrun 2018",
+      "tag": "Race Report",
+      "year": "2018",
+      "excerpt": "An unforgettable day on the Gower coast — the one that convinced Sarah to keep going back, year after year.",
+      "cover": "/images/sosblog-breca18.jpg",
+      "format": "html"
+    },
+    {
+      "slug": "oloppet-gothenburg-2018",
+      "title": "Oloppet Swimrun, Gothenburg 2018",
+      "tag": "Race Report",
+      "year": "2018",
+      "excerpt": "Racing in Sweden felt like coming home for a sport that was born here, on these very kinds of lakes and forest trails.",
+      "cover": "/images/sosblog-ollopet.jpg",
+      "format": "html"
+    }
+  ],
+  "articles": [
+    {
+      "slug": "what-is-swimrun",
+      "title": "What is Swimrun?",
+      "tag": "Swimrun Blog",
+      "year": "",
+      "excerpt": "Everything you need to know about the sport that combines open water swimming and trail running in your wetsuit.",
+      "cover": "/images/sosblog-swimrun.jpg",
+      "format": "html"
+    },
+    {
+      "slug": "what-kit-do-i-need",
+      "title": "What Kit Do I Need?",
+      "tag": "Swimrun Blog",
+      "year": "",
+      "excerpt": "A practical guide to the essential swimrun kit — from wetsuits and pull buoys to paddles and goggles.",
+      "cover": "/images/swimrun-kit-shot1.jpg",
+      "format": "html"
+    },
+    {
+      "slug": "wetsuit-review",
+      "title": "Wetsuit Review",
+      "tag": "Gear Review",
+      "year": "",
+      "excerpt": "Sarah reviews the swimrun wetsuits she has raced in, from budget options to premium builds.",
+      "cover": "/images/swimrun-kit-shot2-scaled.jpg",
+      "format": "html"
+    },
+    {
+      "slug": "low-tide-boyz",
+      "title": "Southsea Swimrun Met the Low Tide Boyz",
+      "tag": "Swimrun Blog",
+      "year": "",
+      "excerpt": "Our very own Sarah King appeared on the Low Tide Boyz podcast — the swimrun world's favourite show.",
+      "cover": "/images/Low-Tide-Boyz-podcast.jpg",
+      "format": "html"
+    },
+    {
+      "slug": "the-big-battle",
+      "title": "The Big Battle",
+      "tag": "Swimrun Blog",
+      "year": "",
+      "excerpt": "The epic story of the SÖS swimrun challenge in the Lake District — a battle against the elements and each other.",
+      "cover": "/images/TheBigBatlleLogo-transp-s-2.png",
+      "format": "html"
+    },
+    {
+      "slug": "environment",
+      "title": "Southsea Swimrun and the Environment",
+      "tag": "Swimrun Blog",
+      "year": "",
+      "excerpt": "How we think about our environmental impact as a swimrun club — from beach cleans to low-carbon travel.",
+      "cover": "/images/Optimized-beach-clean.jpg",
+      "format": "html"
+    },
+    {
+      "slug": "useful-links",
+      "title": "Useful Swimrun Links and Resources",
+      "tag": "Swimrun Blog",
+      "year": "",
+      "excerpt": "A curated collection of useful swimrun resources — events calendars, training guides, kit guides, and community links.",
+      "cover": "/images/sos-home-about.jpg",
+      "format": "html"
+    }
+  ]
+}
