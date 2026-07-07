@@ -111,6 +111,15 @@
   ],
   "articles": [
     {
+      "slug": "does-carbon-make-you-faster",
+      "title": "Does Carbon Really Make You Faster?",
+      "tag": "Gear Review",
+      "year": "",
+      "excerpt": "One of our members put expensive carbon paddles to the test over 8 lengths of Hilsea Lido — carbon vs plastic, large vs medium, and whether a pull buoy matters more than any of it.",
+      "cover": "/images/blog-carbon-frank-paddles.jpg",
+      "format": "html"
+    },
+    {
       "slug": "what-is-swimrun",
       "title": "What is Swimrun?",
       "tag": "Swimrun Blog",
