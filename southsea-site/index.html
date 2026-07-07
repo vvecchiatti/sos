@@ -163,64 +163,28 @@
     overflow: hidden;
   }
 
-  /* Liquid-glass background: brand black + green gradient, no photo. */
+  /* Real swimrun action photo, darkened for legible type. */
   .hero-bg {
     position: absolute;
     inset: 0;
-    background:
-      radial-gradient(65% 90% at 85% 8%, rgba(0,212,74,0.22) 0%, transparent 62%),
-      radial-gradient(50% 75% at 8% 92%, rgba(0,212,74,0.14) 0%, transparent 58%),
-      linear-gradient(155deg, #0d0d0d 0%, var(--black) 55%, #041007 100%);
-  }
-
-  .hero-blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.75;
-    will-change: transform;
-  }
-
-  .hero-blob-1 {
-    width: 46vw; height: 46vw;
-    min-width: 380px; min-height: 380px;
-    top: -12%; right: -8%;
-    background: radial-gradient(circle at 35% 35%, rgba(0,235,82,0.5), rgba(0,212,74,0.16) 55%, transparent 75%);
-    animation: blobDrift 19s ease-in-out infinite alternate;
-  }
-
-  .hero-blob-2 {
-    width: 34vw; height: 34vw;
-    min-width: 300px; min-height: 300px;
-    bottom: -14%; left: -10%;
-    background: radial-gradient(circle at 60% 40%, rgba(0,212,74,0.32), rgba(0,80,30,0.25) 55%, transparent 78%);
-    animation: blobDrift 24s ease-in-out infinite alternate-reverse;
-  }
-
-  .hero-blob-3 {
-    width: 20vw; height: 20vw;
-    min-width: 220px; min-height: 220px;
-    top: 38%; left: 44%;
-    background: radial-gradient(circle, rgba(0,235,82,0.20), transparent 70%);
-    animation: blobDrift 16s ease-in-out infinite alternate;
-    animation-delay: -6s;
-  }
-
-  @keyframes blobDrift {
-    0%   { transform: translate(0, 0) scale(1); }
-    50%  { transform: translate(-4vw, 3vh) scale(1.12); }
-    100% { transform: translate(3vw, -3vh) scale(0.94); }
+    background-image: url('/images/emerging-from-the-lake.jpg');
+    background-size: cover;
+    background-position: 68% center;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero-blob { animation: none; }
     .scroll-line { animation: none; }
   }
 
+  /* Left-to-right dark wash keeps the headline readable; bottom wash carries the
+     description/CTA; a soft green cast at top-right keeps the brand tone. */
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.25) 45%, rgba(8,8,8,0.05) 100%);
+    background:
+      radial-gradient(60% 80% at 88% 6%, rgba(0,212,74,0.28) 0%, transparent 60%),
+      linear-gradient(100deg, rgba(6,10,7,0.94) 0%, rgba(6,10,7,0.78) 34%, rgba(6,10,7,0.42) 60%, rgba(6,10,7,0.30) 100%),
+      linear-gradient(to top, rgba(6,10,7,0.9) 0%, rgba(6,10,7,0.15) 48%, transparent 100%);
   }
 
   .hero-badge {
@@ -298,79 +262,6 @@
   .hero-cta:hover { background: var(--accent-light); color: var(--black); transform: translateY(-2px); }
 
   .hero-cta svg { width: 16px; height: 16px; }
-
-  /* Glass info panel — fills the open right side of the hero. */
-  .hero-panel {
-    position: absolute;
-    top: 50%;
-    right: 2.5rem;
-    transform: translateY(-50%);
-    width: 320px;
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(18px) saturate(1.3);
-    -webkit-backdrop-filter: blur(18px) saturate(1.3);
-    border: 1px solid rgba(255,255,255,0.10);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.10), 0 20px 50px rgba(0,0,0,0.35);
-    border-radius: 18px;
-    padding: 1.6rem 1.6rem 1.4rem;
-    z-index: 2;
-  }
-
-  .hero-panel-label {
-    font-size: 0.68rem;
-    font-weight: 500;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--accent-light);
-    margin-bottom: 1.1rem;
-  }
-
-  .hero-session {
-    display: flex;
-    flex-direction: column;
-    gap: 0.15rem;
-    padding: 0.85rem 0;
-    border-top: 1px solid rgba(255,255,255,0.10);
-  }
-
-  .hero-session-day {
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent-light);
-  }
-
-  .hero-session-name {
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--white);
-  }
-
-  .hero-panel-stats {
-    display: flex;
-    gap: 0.75rem;
-    margin-top: 1.25rem;
-    padding-top: 1.25rem;
-    border-top: 1px solid rgba(255,255,255,0.10);
-  }
-
-  .hero-panel-stat { flex: 1; text-align: center; }
-
-  .hero-panel-stat-num {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    line-height: 1;
-    color: var(--white);
-  }
-
-  .hero-panel-stat-label {
-    font-size: 0.6rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: rgba(245,242,235,0.6);
-    margin-top: 0.35rem;
-  }
 
   .scroll-hint {
     position: absolute;
@@ -970,7 +861,7 @@
     section { padding: 4rem 1.5rem; }
     .hero { padding: 6rem 1.5rem 4rem; }
     .scroll-hint { display: none; }
-    .hero-panel { display: none; }
+    .hero-bg { background-position: 62% center; }
     .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .about-visual { aspect-ratio: 16/9; }
     .sessions-grid { grid-template-columns: 1fr; gap: 1px; }
@@ -1020,9 +911,6 @@
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-bg"></div>
-  <div class="hero-blob hero-blob-1"></div>
-  <div class="hero-blob hero-blob-2"></div>
-  <div class="hero-blob hero-blob-3"></div>
   <div class="hero-overlay"></div>
   <div class="hero-badge">UK's first swimrun club · Est. 2019 · Southsea</div>
   <h1 class="hero-title">
@@ -1030,31 +918,6 @@
     <span class="line-accent">Give</span><br>
     Up.
   </h1>
-  <aside class="hero-panel" aria-label="This week's sessions">
-    <div class="hero-panel-label">On the calendar</div>
-    <div class="hero-session">
-      <span class="hero-session-day">Every Wednesday · 6pm</span>
-      <span class="hero-session-name">RunRun Intervals</span>
-    </div>
-    <div class="hero-session">
-      <span class="hero-session-day">Saturday · Seasonal</span>
-      <span class="hero-session-name">Swimrun + Parkrun Combo</span>
-    </div>
-    <div class="hero-panel-stats">
-      <div class="hero-panel-stat">
-        <div class="hero-panel-stat-num">2019</div>
-        <div class="hero-panel-stat-label">Founded</div>
-      </div>
-      <div class="hero-panel-stat">
-        <div class="hero-panel-stat-num">#1</div>
-        <div class="hero-panel-stat-label">UK club</div>
-      </div>
-      <div class="hero-panel-stat">
-        <div class="hero-panel-stat-num">17+</div>
-        <div class="hero-panel-stat-label">Perks</div>
-      </div>
-    </div>
-  </aside>
   <div class="hero-bottom">
     <p class="hero-desc">
       Open-water swims and seafront trails on the Solent, with a crew that always waits at the buoy. Every pace welcome.
