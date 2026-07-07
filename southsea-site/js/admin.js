@@ -2,14 +2,14 @@
    Static-site publishing tool: edits posts/posts.json, generates the post page,
    blog.html, the home "latest" cards and sitemap.xml (via js/templates.js), and
    commits everything to GitHub in a single commit through the Git Data API.
-   Cloudflare Pages then redeploys the site automatically.
+   Netlify then redeploys the site automatically.
 
-   Auth: a fine-grained GitHub PAT (contents: read/write on southseaswimrun/sos),
+   Auth: a fine-grained GitHub PAT (contents: read/write on vvecchiatti/sos),
    kept in localStorage only. */
 (function () {
   'use strict';
 
-  var OWNER = 'southseaswimrun';
+  var OWNER = 'vvecchiatti';
   var REPO = 'sos';
   var BRANCH = 'main';
   var PREFIX = 'southsea-site/'; // site lives in this folder inside the repo
