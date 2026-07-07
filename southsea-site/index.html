@@ -684,7 +684,8 @@
     width: 100%;
     height: 76px;
     border-radius: 8px;
-    background: var(--black);
+    background: var(--white);
+    border: 1px solid var(--sand-dark);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -697,11 +698,8 @@
     object-fit: contain;
   }
 
-  /* Logos supplied as dark-on-transparent get inverted to read on the black tile. */
+  /* Logos supplied as white/light-on-transparent get inverted to read on the white tile. */
   .partner-logo img.inv { filter: invert(1); }
-
-  /* Logos with a baked-in white background sit on a white tile instead. */
-  .partner-logo.light { background: var(--white); border: 1px solid var(--sand-dark); }
 
   .partner-invite .partner-logo {
     background: transparent;
@@ -1223,12 +1221,12 @@
         <div class="partner-discount">15% off</div>
       </a>
       <a href="https://zone3.com/" target="_blank" rel="noopener" class="partner-card">
-        <div class="partner-logo"><img src="/images/partners/zone3.png" alt="Zone3 logo" class="inv" loading="lazy"></div>
+        <div class="partner-logo"><img src="/images/partners/zone3.png" alt="Zone3 logo" loading="lazy"></div>
         <div class="partner-name">Zone3</div>
         <div class="partner-discount">20% off</div>
       </a>
       <a href="https://veloforte.com/" target="_blank" rel="noopener" class="partner-card">
-        <div class="partner-logo"><img src="/images/partners/veloforte.png" alt="Veloforte logo" class="inv" loading="lazy"></div>
+        <div class="partner-logo"><img src="/images/partners/veloforte.png" alt="Veloforte logo" loading="lazy"></div>
         <div class="partner-name">Veloforte</div>
         <div class="partner-discount">25% off</div>
       </a>
@@ -1248,7 +1246,7 @@
         <div class="partner-discount">10% off</div>
       </a>
       <a href="https://sourcetoseaswimrun.co.uk/" target="_blank" rel="noopener" class="partner-card">
-        <div class="partner-logo"><img src="/images/partners/source-to-sea.png" alt="Source to Sea logo" loading="lazy"></div>
+        <div class="partner-logo"><img src="/images/partners/source-to-sea.png" alt="Source to Sea logo" class="inv" loading="lazy"></div>
         <div class="partner-name">Source to Sea</div>
         <div class="partner-discount">10% off</div>
       </a>
@@ -1268,7 +1266,7 @@
         <div class="partner-discount">10% off</div>
       </a>
       <a href="https://www.madhattersportsevents.co.uk/" target="_blank" rel="noopener" class="partner-card">
-        <div class="partner-logo"><img src="/images/partners/mad-hatters.png" alt="Mad Hatters / Hokey Cokey logo" loading="lazy"></div>
+        <div class="partner-logo"><img src="/images/partners/mad-hatters.png" alt="Mad Hatters / Hokey Cokey logo" class="inv" loading="lazy"></div>
         <div class="partner-name">Mad Hatters / Hokey Cokey</div>
         <div class="partner-discount">15% off</div>
       </a>
@@ -1283,17 +1281,17 @@
         <div class="partner-discount">25% off</div>
       </a>
       <a href="https://www.akamustard.events" target="_blank" rel="noopener" class="partner-card">
-        <div class="partner-logo light"><img src="/images/partners/akam.png" alt="As Keen As Mustard logo" loading="lazy"></div>
+        <div class="partner-logo"><img src="/images/partners/akam.png" alt="As Keen As Mustard logo" loading="lazy"></div>
         <div class="partner-name">As Keen As Mustard</div>
         <div class="partner-discount">10% off</div>
       </a>
       <a href="https://www.weswimrun.org/" target="_blank" rel="noopener" class="partner-card">
-        <div class="partner-logo"><img src="/images/partners/weswimrun.png" alt="WeSwimrun logo" loading="lazy"></div>
+        <div class="partner-logo"><img src="/images/partners/weswimrun.png" alt="WeSwimrun logo" class="inv" loading="lazy"></div>
         <div class="partner-name">WeSwimrun</div>
         <div class="partner-discount">15% off</div>
       </a>
       <a href="https://en.exswimrun.se/" target="_blank" rel="noopener" class="partner-card">
-        <div class="partner-logo"><img src="/images/partners/ex-swimrun.png" alt="EX Swimrun logo" loading="lazy"></div>
+        <div class="partner-logo"><img src="/images/partners/ex-swimrun.png" alt="EX Swimrun logo" class="inv" loading="lazy"></div>
         <div class="partner-name">EX Swimrun</div>
         <div class="partner-discount">10% off</div>
       </a>
