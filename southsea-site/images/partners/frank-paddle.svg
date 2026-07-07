@@ -1,8 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 160" role="img" aria-label="Frank Paddle">
-  <!-- Typographic mark: Frank Paddle's site uses a text logo, recreated here. -->
-  <g transform="translate(200 62)" text-anchor="middle" fill="#111111" font-family="Futura, 'Trebuchet MS', 'Avenir Next', sans-serif" font-weight="700">
-    <text y="0" font-size="44" letter-spacing="10">FRANK</text>
-    <text y="52" font-size="44" letter-spacing="6">PADDLE</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 210" role="img" aria-label="Frank Paddle">
+  <!-- Recreation of the Frank Paddle brand mark: FR + paddle-blade "A" (with two
+       dots) + NK, "PADDLE" below. Single colour so it inverts cleanly. -->
+  <g fill="#111111" font-family="Futura, 'Century Gothic', 'Trebuchet MS', 'Avenir Next', sans-serif" font-weight="800">
+    <text x="205" y="120" text-anchor="end" font-size="100" letter-spacing="1">FR</text>
+    <text x="315" y="120" text-anchor="start" font-size="100" letter-spacing="1">NK</text>
+    <text x="260" y="188" text-anchor="middle" font-size="56" letter-spacing="8">PADDLE</text>
   </g>
-  <rect x="130" y="138" width="140" height="6" rx="3" fill="#00D44A"/>
+  <!-- Paddle-blade "A": slim rounded chevron, notched tip, two dots. -->
+  <polyline points="234,120 260,50 286,120" fill="none" stroke="#111111" stroke-width="22"
+            stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M254,58 L260,69 L266,58 Z" fill="#ffffff"/>
+  <circle cx="252" cy="99" r="6" fill="#111111"/>
+  <circle cx="268" cy="99" r="6" fill="#111111"/>
 </svg>
