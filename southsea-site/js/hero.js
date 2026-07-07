@@ -4,11 +4,16 @@
   var bg = document.getElementById('heroBg');
   if (!bg) return;
   var imgs = [
-    '/images/emerging-from-the-lake.jpg',
-    '/images/Coniston20251.jpg',
-    '/images/received_531417724571319.jpg',
-    '/images/Cote-Dazure2.jpg',
-    '/images/received_554777298985856.jpg'
+    '/images/116243526_10158397088366578_2638732942327839254_n.jpg',
+    '/images/116431600_10158400505761578_2008022198782399006_n.jpg',
+    '/images/118850265_10224975031902555_243977761831483334_n.jpg',
+    '/images/122052665_10225606291563652_4598841480224246808_n-1.jpg',
+    '/images/Cornwall3.jpg',
+    '/images/d8e43096-02c9-4bcb-b9f8-d3ebe57aa3f4-1024x683.webp',
+    '/images/d463d66f-3720-49e4-9cc9-14fe73d26e64-1-e1601547110867.jpeg',
+    '/images/otillofinal-15k-copy-2.jpg',
+    '/images/swimrun-hero-4.jpg',
+    '/images/WhatsApp-Image-2025-06-14-at-16.08.49.jpeg'
   ];
   // Shuffle so each visit starts on a different photo.
   for (var i = imgs.length - 1; i > 0; i--) {
