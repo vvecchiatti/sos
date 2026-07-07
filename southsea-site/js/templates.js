@@ -351,10 +351,24 @@ gallery,
   /* ---------------- home page "latest posts" cards ----------------
      Replaces the content between the HOME-LATEST markers in index.html. */
   function renderHomeLatest(manifest) {
-    var reports = (manifest.reports || []).slice(0, 3);
-    return reports.map(function (p, idx) {
+    // Newest across both reports and articles. Entries with an explicit ISO
+    // `date` sort first (newest); the rest keep manifest order (reports, then
+    // articles), so undated legacy posts stay in their existing sequence.
+    var all = (manifest.reports || []).concat(manifest.articles || [])
+      .map(function (p, i) { return { p: p, i: i }; });
+    all.sort(function (a, b) {
+      var da = a.p.date || '', db = b.p.date || '';
+      if (da && db) return da < db ? 1 : (da > db ? -1 : a.i - b.i);
+      if (da) return -1;
+      if (db) return 1;
+      return a.i - b.i;
+    });
+    var latest = all.slice(0, 3).map(function (x) { return x.p; });
+    return latest.map(function (p, idx) {
       var metaColor = idx === 0 ? 'var(--accent)' : 'var(--text-muted)';
-      var metaLabel = idx === 0 ? 'Latest · ' + esc(p.year) : esc(p.tag) + ' · ' + esc(p.year);
+      var metaLabel = idx === 0
+        ? (p.year ? 'Latest · ' + esc(p.year) : 'Latest')
+        : (p.year ? esc(p.tag) + ' · ' + esc(p.year) : esc(p.tag));
       return [
         '      <a href="posts/' + esc(p.slug) + '.html" class="home-post-card" style="background: var(--white); text-decoration: none; color: inherit; display: flex; flex-direction: column;">',
         '        <div style="aspect-ratio:16/9; overflow:hidden;">',

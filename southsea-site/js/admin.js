@@ -324,6 +324,14 @@
       slug: post.slug, title: post.title, tag: post.tag, year: post.year,
       excerpt: post.excerpt, cover: post.cover, format: post.format
     };
+    // Publish date (ISO) — orders the home "latest" strip across reports/articles.
+    // Preserve the original date when editing an existing post.
+    if (state.editing) {
+      var prev = state.manifest[state.editing.list][state.editing.index];
+      entry.date = (prev && prev.date) ? prev.date : new Date().toISOString().slice(0, 10);
+    } else {
+      entry.date = new Date().toISOString().slice(0, 10);
+    }
     if (post.format === 'text') {
       entry.author = post.author;
       entry.gallery = post.gallery;
